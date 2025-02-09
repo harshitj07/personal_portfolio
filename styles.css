@@ -1,3 +1,20 @@
+/* Colour Variables */
+:root {
+	/* Navy-Blue | Primary Background Colour */
+	--midnight: #21263b;
+	/* Dark-Blue | Header Colour */
+	--navy:  #2e3c73;
+	/* Off-White | Primary Text Colour */
+	--snow:  #edeef0;
+	/* Bland-Blue | Hover Colour */
+   --denim:  #4c79b5;
+
+  --midnightRGB: 33, 38, 59;
+  --navyRGB:  46, 60, 115;
+  --snowRGB: 237, 238, 240;
+  --denimRGB: 76, 121, 181;
+}
+
 body, html {
     margin: 0;
     padding: 0;
