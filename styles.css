@@ -4,172 +4,226 @@ body, html {
 }
 
 body {
-	background: var(--midnight); /* background colour */
-	color: #333333;  /* font colour */
-	font-family: 'Nunito', sans-serif; /* https://fonts.google.com/ */
-	text-align: center;
+    background: var(--midnight);
+    color: #333333;
+    font-family: 'Nunito', sans-serif;
+    text-align: center;
+}
+
+h1, h2, h3 {
+    font-family: 'Nunito', sans-serif;
+    text-align: center;
 }
 
 h1 {
-	font-family: 'Nunito', sans-serif;
-	color: #fffefa;
-	text-align: center;
-	font-size: 35px;
+    font-size: 35px;
+    color: var(--snow);
 }
 
 h2, h3 {
-	font-family: 'Nunito', sans-serif;
-	color: #fffefa;
-	text-align: center;
+    color: var(--denim);
 }
 
-/* The Course Section */
-p.fancy1 {
-	margin: 10px;
-	position: relative;
-	display: inline-block;
-	/* width: 50%; */
-	box-sizing: border-box;
-	background: var(--snow); 
-	padding: 20px;
-	font-size: 1.05em;  /* 105% of default font size */
-	font-family: 'Nunito', sans-serif;
-	border-radius: 10px 10px 10px 10px;
-	text-align: center;
+p.fancy1, p.fancy2, p.fancy3 {
+    margin: 10px;
+    position: relative;
+    display: inline-block;
+    box-sizing: border-box;
+    background: var(--snow);
+    padding: 20px;
+    font-family: 'Nunito', sans-serif;
+    border-radius: 10px;
+    text-align: center;
 }
 
-p.fancy2 {
-	margin: 10px;
-	position: relative;
-	display: inline-block;
-	/* width: 50%; */
-	box-sizing: border-box;
-	background: var(--snow); 
-	padding: 20px;
-	font-size: 1.05em;  /* 105% of default font size */
-	font-family: 'Nunito', sans-serif;	
-	border-radius: 10px 10px 10px 10px;
-	text-align: center;
-}
-
-
-/* About Me Section */
 p.fancy3 {
-	margin: 10px;
-	position: relative;
-	display: inline-block;
-	width: 100%;
-	height: 100%;
-	box-sizing: border-box;
-	background: var(--snow); 
-	padding: 20px;
-	font-size: 1.23em;  /* 123% of default font size */
-	font-family: 'Nunito', sans-serif;	
-	border-radius: 10px 10px 10px 10px;
-	text-align: center;
-}
-
-/* Image of Me */
-img.me {
-	margin: 10px;
-	position: relative;
-	height: 15%;
-	width: 15%;
-	border: 5px solid var(--snow);
+    width: 100%;
+    height: 100%;
+    font-size: 1.23em;
 }
 
 img {
-	border-radius: 10px;
+    border-radius: 10px;
+    height: 70%;
+    width: 70%;
 }
 
-/* Default link styles */
+img.me {
+    height: 15%;
+    width: 15%;
+    border: 5px solid var(--snow);
+}
+
 a:link, a:visited, a:active {
-	position: relative;
-	display: inline-block;
-	color: #333333;
-	padding: 5px;
-	text-decoration: none;
-	transition: all 0.5s ease; /* ease the hover transition */
-	font-family: 'Nunito', sans-serif;
+    position: relative;
+    display: inline-block;
+    color: #333333;
+    padding: 5px;
+    text-decoration: none;
+    transition: all 0.5s ease;
+    font-family: 'Nunito', sans-serif;
 }
 
-/* Link on hover */
 a:hover {
-	color: var(--denim);
-	text-decoration: none;
-	font-family: 'Nunito', sans-serif;
+    color: var(--denim);
 }
 
-/* 
-Hover animation on mail link
-Source: https://css-tricks.com/css-link-hover-effects/ -> The Right-to-Left Color Swap Link Hover Effect
-*/
+/* Mail and Link Hover Effect */
+a.mail, a.link {
+    background-size: 200% 100%;
+    background-position: -100%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: all 0.7s ease-in-out;
+}
+
+a.mail:hover, a.link:hover {
+    background-position: 0;
+}
 
 a.mail {
-	background-image: linear-gradient(
-	to right,
-	#4c79b5,
-	#4c79b5 50%,
-	#ffffff 50%
-	);
-	background-size: 200% 100%;
-	background-position: -100%;
-	-webkit-background-clip: text;
-	-webkit-text-fill-color: transparent;
-	transition: all 0.7s ease-in-out;
+    background-image: linear-gradient(to right, #4c79b5, #4c79b5 50%, #ffffff 50%);
 }
 
-a.mail:before {
-  	content: '';
-  	background: #4c79b5;
-  	display: block;
-  	position: absolute;
-  	bottom: -3px;
-  	left: 0;
-  	width: 0;
-  	height: 3px;
+a.mail:before, a.link:before {
+    content: '';
+    display: block;
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 0;
+    height: 3px;
 }
 
-a.mail:hover {
-	background-position: 0;
+a.mail:hover::before, a.link:hover::before {
+    width: 100%;
 }
 
-a.mail:hover::before {
-	width: 100%;
+a.link {
+    background-image: linear-gradient(to right, #ffffff, #ffffff 50%, #4c79b5 50%);
 }
 
-/* Grid Layout for Course and About Me Section */
 div.course, div.me {
-	display: flex;
-	width: 70%;
-	margin: auto;
+    display: flex;
+    width: 70%;
+    margin: auto;
 }
 
-/* Title formatting for inside the boxes */
 span.overview, span.topic {
-	font-size: 22.5px;
+    font-size: 22.5px;
 }
 
-/* Footer */
 footer {
-	background-color: var(--navy);
-	text-align: center;
-	color: var(--snow);
-	padding: 50px;
+    background-color: var(--navy);
+    text-align: center;
+    color: var(--snow);
+    padding: 50px;
 }
 
-footer p{
-	margin: 0;
+footer p {
+    margin: 0;
 }
 
-@media only screen and (max-width: 970px){
-	.course {
-		flex-direction: column;
-		align-items: center;
-		width: 100%;
-	}
+@media only screen and (max-width: 970px) {
+    .course {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
 
-	p.fancy1, p.fancy2 {
-		width: 75%;
-	}
+    p.fancy1, p.fancy2 {
+        width: 75%;
+    }
+}
+
+table, th, td {
+    border: 2px solid var(--midnight);
+    border-collapse: collapse;
+    border-radius: 5px;
+    padding: 10px;
+    width: 400px;
+}
+
+iframe {
+    border-radius: 10px;
+}
+
+.card {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding: 5%;
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 0.5em;
+    display: inline-flex;
+    box-sizing: border-box;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.grid {
+    padding: 0 5vw;
+    margin: auto 0;
+}
+
+/* Submit Button */
+.submit {
+    --b: 3px;
+    --s: .45em;
+    --color: var(--snow);
+    padding: calc(.5em + var(--s)) calc(.9em + var(--s));
+    color: var(--color);
+    --_p: var(--s);
+    background:
+        conic-gradient(from 90deg at var(--b) var(--b), #0000 90deg, var(--color) 0)
+        var(--_p) var(--_p)/calc(100% - var(--b) - 2*var(--_p)) calc(100% - var(--b) - 2*var(--_p));
+    transition: .3s linear, color 0s, background-color 0s;
+    outline: var(--b) solid #0000;
+    outline-offset: .6em;
+    font-size: 16px;
+    border: 0;
+    user-select: none;
+    width: 125px;
+    height: 65px;
+    margin: 15px;
+}
+
+.submit:hover, .submit:focus-visible {
+    --_p: 0px;
+    outline-color: var(--color);
+    outline-offset: .05em;
+}
+
+.submit:active {
+    background: var(--color);
+    color: #333;
+}
+
+/* Input Box */
+.frmInput {
+    border: 3px solid var(--denim);
+    border-radius: 5px;
+    margin: 10px;
+    height: 40px;
+    width: 150px;
+    text-align: center;
+    transition-duration: 1.5s;
+}
+
+.frmInput:hover, .frmInput:focus-visible {
+    border: 5px solid var(--navy);
+    background-color: #e6f1fc;
+    color: black;
+    height: 45px;
+    width: 250px;
+}
+
+.frmInput:active {
+    background: #e6f1fc;
+    color: black;
+}
+
+::placeholder, option, textarea, input, select {
+    font-family: 'Nunito', sans-serif;
 }
