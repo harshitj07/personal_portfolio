@@ -1,294 +1,266 @@
 <!DOCTYPE html>
+   
 <html lang="en">
 <head>
-	<meta charset="utf-8">	
-	
-	<meta name="description" content="This pages is a personal portfolio.">
-	<meta name="author" content="Harshit Jain">	
-	
+	<meta charset="utf-8">
+
+	<!-- Description -->
+	<meta name="description" content="PUT YOUR PAGE DESCRIPTION HERE">
+	<meta name="author" content="Harshit Jain">
+
+	<!-- Google Fonts -->
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@100&display=swap" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css2?family=GFS+Didot&display=swap" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300&display=swap" rel="stylesheet">
 
-	<!-- Linking the stylesheet -->
-	<link rel="stylesheet" href="styles.css">
-	
+	<!-- link to animate.css -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+
+	<!-- Grid Styles -->
+	<link rel="stylesheet" href="https://icsprogramming.ca/2022-2023/jain330c2/section4.2/grid_styles.css">
+
 	<style>
-	body, html {
-		margin: 0;
-		padding: 0;
-	}
+		body, html {
+            margin: 0;
+            padding: 0;
+        }
 
-	body {
-		background: var(--midnight); /* background colour */
-		color: var(--snow);  /* font colour */
-		font-family: 'Nunito', sans-serif; /* https://fonts.google.com/ */
-		text-align: center;
-	}
+        body {
+            background: var(--midnight); /* background colour */
+            color: var(--snow);  /* font colour */
+            font-family: 'Nunito', sans-serif; /* https://fonts.google.com/ */
+            text-align: center;
+        }
 
-	h1 {
-		font-family: 'Nunito', sans-serif;
-		color: #fffefa;
-		text-align: center;
-		font-size: 35px;
-		color: var(--snow);
-	}
+        h1 {
+            font-family: 'Nunito', sans-serif;
+            color: #fffefa;
+            text-align: center;
+            font-size: 35px;
+            color: var(--snow);
+        }
 
-	h2, h3 {
-		font-family: 'Nunito', sans-serif;
-		color: var(--denim);
-		text-align: center;
-	}
+        h2, h3 {
+            font-family: 'Nunito', sans-serif;
+            color: var(--denim);
+            text-align: center;
+        }
 
-	img {
-		height: 70%;
-		width: 70%;
-		border-radius: 10px;
-	}
+        img {
+            height: 70%;
+            width: 70%;
+            border-radius: 10px;
+        }
 
-	table, th, td {
-		border: 2px solid var(--midnight);
-		border-collapse: collapse;
-		border-radius: 5px;
-		padding: 10px;
-		width: 400px;
-	}
+        table, th, td {
+            border: 2px solid var(--midnight);
+            border-collapse: collapse;
+            border-radius: 5px;
+            padding: 10px;
+            width: 400px;
+        }
 
-	iframe {
-		border-radius: 10px;
-	}
+        iframe {
+        	border-radius: 10px;
+        }
 
-	.card {
-		position: relative;
-		width: 100%;
-		height: 100%; 
-		padding: 5%; 
-		background: rgba(0,0,0,0.4);
-		border-radius: 0.5em; 
-		display: inline-flex;
-		box-sizing: border-box;
-		align-items: center; 
-		justify-content: center;    
-		align-content: center;
-		justify-items: center;
-		flex-direction: column;
-	}
+        .card {
+            position: relative;
+            width: 100%;
+            height: 100%; 
+            padding: 5%; 
+            background: rgba(0,0,0,0.4);
+            border-radius: 0.5em; 
+            display: inline-flex;
+            box-sizing: border-box;
+            align-items: center; 
+            justify-content: center;    
+            align-content: center;
+            justify-items: center;
+            flex-direction: column;
+        }
 
-	.php {
-		font-size: 20px; 
-		align-items: center; 
-		justify-content: center; 
-		display: flex; 
-		padding: 50px
-	}
+        .php {
+            font-size: 20px; 
+            align-items: center; 
+            justify-content: center; 
+            display: flex; 
+            padding: 50px
+        }
 
-	.grid {
-		padding: 0 5vw 0 5vw;
-		margin: auto 0;
-	}
+        .grid {
+            padding: 0 5vw 0 5vw;
+            margin: auto 0;
+        }
 
-	/* 
-	Submit button styling 
-	Source: https://getcssscan.com/css-buttons-examples
-	*/
-	.submit {
-		--b: 3px;   /* border thickness */
-		--s: .45em; /* size of the corner */
-		--color: var(--snow);
-	  
-		padding: calc(.5em + var(--s)) calc(.9em + var(--s));
-		color: var(--color);
-		--_p: var(--s);
-		background:
-			conic-gradient(from 90deg at var(--b) var(--b),#0000 90deg,var(--color) 0)
-			var(--_p) var(--_p)/calc(100% - var(--b) - 2*var(--_p)) calc(100% - var(--b) - 2*var(--_p));
-		transition: .3s linear, color 0s, background-color 0s;
-		outline: var(--b) solid #0000;
-		outline-offset: .6em;
-		font-size: 16px;
+        /* 
+        Submit button styling 
+        Source: https://getcssscan.com/css-buttons-examples
+        */
+        .submit {
+            --b: 3px;   /* border thickness */
+            --s: .45em; /* size of the corner */
+            --color: var(--snow);
+          
+            padding: calc(.5em + var(--s)) calc(.9em + var(--s));
+            color: var(--color);
+            --_p: var(--s);
+            background:
+                conic-gradient(from 90deg at var(--b) var(--b),#0000 90deg,var(--color) 0)
+                var(--_p) var(--_p)/calc(100% - var(--b) - 2*var(--_p)) calc(100% - var(--b) - 2*var(--_p));
+            transition: .3s linear, color 0s, background-color 0s;
+            outline: var(--b) solid #0000;
+            outline-offset: .6em;
+            font-size: 16px;
 
-		border: 0;
+            border: 0;
 
-		user-select: none;
-		-webkit-user-select: none;
-		touch-action: manipulation;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
 
-		width: 125px;
-		height: 65px;
+            width: 125px;
+            height: 65px;
 
-		margin: 15px;
-	}
+            margin: 15px;
+        }
 
-	.submit:hover,
-	.submit:focus-visible {
-		--_p: 0px;
-		outline-color: var(--color);
-		outline-offset: .05em;
-	}
+        .submit:hover,
+        .submit:focus-visible {
+            --_p: 0px;
+            outline-color: var(--color);
+            outline-offset: .05em;
+        }
 
-	.submit:active {
-		background: var(--color);
-		color: #333;
-	}
+        .submit:active {
+            background: var(--color);
+            color: #333;
+        }
 
-	/* Input box styling */
-	.frmInput {
-		border: 3px solid var(--denim);
-		border-radius: 5px;
-		margin: 10px;
-		height: 40px;
-		width: 150px;
-		text-align: center;
-		transition-duration: 1.5s;
-	}   
+        /* Input box styling */
+        .frmInput {
+            border: 3px solid var(--denim);
+            border-radius: 5px;
+            margin: 10px;
+            height: 40px;
+            width: 150px;
+            text-align: center;
+            transition-duration: 1.5s;
+        }   
 
-	.frmInput:hover,
-	.frmInput:focus-visible {
-		border: 5px solid var(--navy);
-		outline-offset: .1em;
-		background-color: #e6f1fc;
-		color: black;
-		height: 45px;
-		width: 250px;
-		transition-duration: 1.5s;
-	}
+        .frmInput:hover,
+        .frmInput:focus-visible {
+            border: 5px solid var(--navy);
+            outline-offset: .1em;
+            background-color: #e6f1fc;
+            color: black;
+            height: 45px;
+            width: 250px;
+            transition-duration: 1.5s;
+        }
 
-	.frmInput:active {
-		background: #e6f1fc;
-		color: black;
-	}
+        .frmInput:active {
+            background: #e6f1fc;
+            color: black;
+        }
 
-	::placeholder, option, textarea, input, select {
-		font-family: 'Nunito', sans-serif;
-	}
+        ::placeholder, option, textarea, input, select {
+            font-family: 'Nunito', sans-serif;
+        }
 
-	/* 
-	Hover animation on mail link
-	Source: https://css-tricks.com/css-link-hover-effects/ -> The Right-to-Left Color Swap Link Hover Effect
-	*/
+        /* 
+        Hover animation on mail link
+        Source: https://css-tricks.com/css-link-hover-effects/ -> The Right-to-Left Color Swap Link Hover Effect
+        */
 
-	a.mail {
-		background-image: linear-gradient(
-			to right,
-			#4c79b5,
-			#4c79b5 50%,
-			#ffffff 50%
-		);
-		background-size: 200% 100%;
-		background-position: -100%;
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		transition: all 0.7s ease-in-out;
-	}
+        a.mail {
+            background-image: linear-gradient(
+                to right,
+                #4c79b5,
+                #4c79b5 50%,
+                #ffffff 50%
+            );
+            background-size: 200% 100%;
+            background-position: -100%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            transition: all 0.7s ease-in-out;
+        }
 
-	a.mail:before {
-		content: '';
-		background: #4c79b5;
-		display: block;
-		position: absolute;
-		bottom: -3px;
-		left: 0;
-		width: 0;
-		height: 3px;
-	}
+        a.mail:before {
+            content: '';
+            background: #4c79b5;
+            display: block;
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 0;
+            height: 3px;
+        }
 
-	a.mail:hover {
-		background-position: 0;
-	}
+        a.mail:hover {
+            background-position: 0;
+        }
 
-	/* 
-	Hover animation on regular link
-	Source: https://css-tricks.com/css-link-hover-effects/ -> The Right-to-Left Color Swap Link Hover Effect
-	*/
+        /* 
+        Hover animation on regular link
+        Source: https://css-tricks.com/css-link-hover-effects/ -> The Right-to-Left Color Swap Link Hover Effect
+        */
 
-	a.link {
-		background-image: linear-gradient(
-			to right,
-			#ffffff,
-			#ffffff 50%,
-			#4c79b5 50%
-		);
-		background-size: 200% 100%;
-		background-position: -100%;
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		transition: all 0.7s ease-in-out;
-	}
+        a.link {
+            background-image: linear-gradient(
+                to right,
+                #ffffff,
+                #ffffff 50%,
+                #4c79b5 50%
+            );
+            background-size: 200% 100%;
+            background-position: -100%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            transition: all 0.7s ease-in-out;
+        }
 
-	a.link:before {
-		content: '';
-		background: #ffffff;
-		display: block;
-		position: absolute;
-		bottom: -3px;
-		left: 0;
-		width: 0;
-		height: 3px;
-	}
+        a.link:before {
+            content: '';
+            background: #ffffff;
+            display: block;
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 0;
+            height: 3px;
+        }
 
-	a.link:hover {
-		background-position: 0;
-	}
+        a.link:hover {
+            background-position: 0;
+        }
 
-	/* Footer */
-	footer {
-		background-color: var(--navy);
-		text-align: center;
-		color: var(--snow);
-		padding: 50px;
-	}
+        /* Footer */
+        footer {
+            background-color: var(--navy);
+            text-align: center;
+            color: var(--snow);
+            padding: 50px;
+        }
 
-	footer p{
-		margin: 0;
-	}
+        footer p{
+            margin: 0;
+        }
 	</style>
 </head>
 <body>
 	<!-- main content -->
-	<!-- Course Overview -->
-	</br>
-	</br>
 
-	<!-- The Course -->
-	<h2>The Course</h2>
-	<div class="course">
-
-		<!-- Overview-->
-		<p class="fancy1">
-			<span class="overview">Overview</span>
-			</br>
-			</br>
-			In this course, we will be learning basic programming techniques and skills that are applicable to most programming languages. To learn these skills, we will be learning how to design and develop web applications using HTML5, PHP, JQuery, C and MySQL. We will learn how to create and manage a website using HTML standards and also how to create dynamic websites using the PHP scripting language. Aditionally we will be integrating databases into our programming using MySQL as well as implementing the dynamic functionality of JQuery.
-		</p>
-
-		<!-- Topics -->
-		<p class="fancy2">
-			<span class="topic">Topics</span>
-			</br>
-			</br>
-			Topics that we will be covering include variables, calculations, data structures, functions, arrays, conditional statements, decisions, loops, data-control, data-storage, database management, GUI design, user input/output standards, troubleshooting, and media embedding. Additionally, we will be discussing careers, jobs, and researching trends in the field of computer science.
-		</p>
-	</div>
-	</br>
-	</br>
-
-	<!-- About Me -->
-	<h2>About Me</h2>
-	<div class="me">
-		<img class="me" src="images/me.jpeg"></img>
-		<p class="fancy3">
-			Hi! My name is Harshit Jain and I am a 12th grade student who currently goes to Aldershot High School. I come from an Indian family and I was born in New Dehli, India in the year 2007. From the age of 3.5, I have been living in Canada. Initially, I resided in Vancouver, on the other side of Canada, but since 2015, I have been residing in the Greater Toronto Area (GTA). I have lived for a year in Mississauga, a year in Oakville, and 5+ years in Burlington. I have a strong passion for math, science, computers, and technology. In the future, I would like to pursue a career in the field of Engineering or Computers whether this is Computer Engineering or Computer Science. 
-		</p>
-	</div>
-	</br>
-	</br>
 	<!-- end main content -->
+
+	<!-- PHP -->
+
 
 	<!-- footer -->
 	<footer>
-		<p>This site was created for ICS3UO-02. You can contact me at<a class="mail" href="mailto:1jainhar@hdsb.ca">1jainhar@hdsb.ca</a>or 905-802-2902.</p>
+		<p>This site was created for ICS3UO-02. You can contact me at <a class="mail" href="mailto:1jainhar@hdsb.ca">1jainhar@hdsb.ca</a> or 905-802-2902.</p>
 	</footer>
+
 </body>
 </html>
