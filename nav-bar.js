@@ -135,10 +135,9 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     const toggleButton = document.createElement("button");
-    // Adjust position to be more out of the way on mobile
     toggleButton.style.position = "fixed";
-    toggleButton.style.bottom = isMobile ? "50px" : "30px";
-    toggleButton.style.right = isMobile ? "50px" : "30px";
+    toggleButton.style.bottom = "30px";
+    toggleButton.style.right = "30px";
     toggleButton.style.padding = "12px";
     toggleButton.style.cursor = "pointer";
     toggleButton.style.fontSize = "20px";
@@ -150,61 +149,30 @@ document.addEventListener("DOMContentLoaded", function () {
     toggleButton.style.display = "flex";
     toggleButton.style.alignItems = "center";
     toggleButton.style.justifyContent = "center";
-    toggleButton.style.boxShadow = "0 3px 10px rgba(0, 0, 0, 0.2)";
     document.body.appendChild(toggleButton);
 
     const root = document.documentElement;
 
-    // Function to apply the theme with the same icons, but ensure they work on mobile
+    // Function to apply the theme
     function applyTheme(isDarkMode) {
         if (isDarkMode) {
             root.style.setProperty("--navy", "#141414");
             root.style.setProperty("--midnight", "#222126");
             root.style.setProperty("--snow", "#edeef0");
             root.style.setProperty("--denim", "#373740");
-            toggleButton.innerHTML = "\u2600"; // Keep original sun symbol
+            toggleButton.innerHTML = "\u2600"; // Sun symbol for light mode
             toggleButton.style.background = "#f0f0f0";
             toggleButton.style.color = "#000";
-            // Ensure visibility on mobile dark mode
-            toggleButton.style.boxShadow = "0 3px 10px rgba(255, 255, 255, 0.15)";
-            toggleButton.style.opacity = "0.9";
         } else {
             root.style.setProperty("--navy", "#f2ede4");
             root.style.setProperty("--midnight", "#c9bba5");
             root.style.setProperty("--snow", "#251a14");
             root.style.setProperty("--denim", "#5a5148");
-            toggleButton.innerHTML = "\u263D"; // Keep original moon symbol
-            toggleButton.style.background = "#3a2518"; // Darker background for better contrast
-            toggleButton.style.color = "#f2ede4";
-            // Ensure visibility on mobile light mode
-            toggleButton.style.boxShadow = "0 3px 10px rgba(0, 0, 0, 0.3)";
-            toggleButton.style.opacity = "0.9";
-        }
-        
-        // Make touch targets larger on mobile
-        if (isMobile) {
-            toggleButton.style.width = "50px";
-            toggleButton.style.height = "50px";
-            toggleButton.style.fontSize = "24px";
+            toggleButton.innerHTML = "\u263D"; // Moon symbol for dark mode
+            toggleButton.style.background = "#d6c4b5";
+            toggleButton.style.color = "#4a3f37";
         }
     }
-
-    // Window resize handler to ensure proper button positioning and sizing when orientation changes
-    window.addEventListener('resize', function() {
-        const isMobileNow = window.innerWidth <= 768;
-        toggleButton.style.bottom = isMobileNow ? "50px" : "30px";
-        toggleButton.style.right = isMobileNow ? "50px" : "30px";
-        
-        if (isMobileNow) {
-            toggleButton.style.width = "50px";
-            toggleButton.style.height = "50px";
-            toggleButton.style.fontSize = "24px";
-        } else {
-            toggleButton.style.width = "40px";
-            toggleButton.style.height = "40px";
-            toggleButton.style.fontSize = "20px";
-        }
-    });
 
     // Load the saved mode from localStorage (default to light mode if not set)
     const isDarkMode = localStorage.getItem("darkMode") === "true";

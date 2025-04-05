@@ -1583,4 +1583,141 @@ z-index: 999;
     grid-column: 1 / -1 !important;
     width: 100% !important;
   }
+
+  /* Fix for mobile theme toggle button */
+  /* Make sure the theme toggle button doesn't get hidden under other elements */
+  button[style*="position: fixed"][style*="bottom:"][style*="right:"] {
+    bottom: 50px !important;
+    right: 50px !important;
+    width: 50px !important;
+    height: 50px !important;
+    font-size: 24px !important;
+    opacity: 0.95 !important;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.3) !important;
+    z-index: 9999 !important;
+  }
+  
+  /* Ensure the moon/sun icon is properly centered */
+  button[style*="position: fixed"][style*="bottom:"][style*="right:"] {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+}
+
+/* Additional mobile-specific styles for all pages */
+@media screen and (max-width: 768px) {
+  /* Ensure consistent margins and spacing */
+  body {
+    padding: 0;
+    overflow-x: hidden;
+  }
+  
+  /* Fix container widths */
+  .container, 
+  .content-container,
+  div.course, 
+  div.me, 
+  div.container,
+  div[class*="container"] {
+    width: 95% !important;
+    padding: 10px !important;
+    margin: 0 auto !important;
+  }
+  
+  /* Responsive table adjustments */
+  table {
+    display: block;
+    width: 100% !important;
+    overflow-x: auto;
+  }
+  
+  /* Fix form elements */
+  input, select, textarea {
+    width: 100% !important;
+    box-sizing: border-box;
+  }
+  
+  /* Adjust heading sizes */
+  h1 {
+    font-size: 2.2rem !important;
+  }
+  
+  h2 {
+    font-size: 1.8rem !important;
+  }
+  
+  h3 {
+    font-size: 1.5rem !important;
+  }
+  
+  /* Force single column layout for flexbox containers */
+  [style*="display: flex"], 
+  [style*="display:flex"],
+  .flex-container {
+    flex-direction: column !important;
+    align-items: center !important;
+  }
+  
+  /* Make all images responsive */
+  img:not(.hero-img) {
+    max-width: 90% !important;
+    height: auto !important;
+    margin: 10px auto !important;
+  }
+  
+  /* Project cards and other card-like elements */
+  .card, .project-card, [class*="card"] {
+    width: 100% !important;
+    margin: 10px 0 !important;
+  }
+  
+  /* Better spacing between sections */
+  section, article, [class*="section"] {
+    margin-bottom: 2rem !important;
+    padding: 1rem !important;
+  }
+}
+
+/* Specific fixes for research and project pages */
+@media screen and (max-width: 768px) {
+  /* Research page specific */
+  .research-item,
+  .publication,
+  .paper,
+  .project {
+    width: 100% !important;
+    flex-direction: column !important;
+    margin: 1rem 0 !important;
+  }
+  
+  /* Fix for timelines often used on project pages */
+  .timeline, 
+  .timeline-item,
+  [class*="timeline"] {
+    width: 100% !important;
+    margin-left: 0 !important;
+    padding-left: 1rem !important;
+  }
+  
+  /* Table improvements for mobile */
+  td, th {
+    padding: 8px 5px !important;
+    font-size: 0.9rem !important;
+  }
+  
+  /* Contact form improvements */
+  form {
+    width: 90% !important;
+    margin: 0 auto !important;
+    padding: 15px !important;
+  }
+  
+  /* Resume specific fixes */
+  .resume-section,
+  .experience,
+  .education,
+  [class*="resume"] {
+    padding: 0.8rem !important;
+  }
 }
