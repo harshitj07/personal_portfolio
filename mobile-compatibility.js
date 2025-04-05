@@ -35,38 +35,11 @@ document.addEventListener("DOMContentLoaded", function() {
             );
         }
         
-        // Fix theme toggle position and appearance for mobile
+        // Fix theme toggle position for mobile
         const themeToggle = document.querySelector('button[style*="position: fixed"][style*="bottom:"][style*="right:"]');
         if (themeToggle) {
-            themeToggle.style.bottom = '15px';
-            themeToggle.style.right = '15px';
-            themeToggle.style.width = '40px';
-            themeToggle.style.height = '40px';
-            themeToggle.style.fontSize = '18px';
-            
-            // Check if icon is present, if not replace with FontAwesome icon
-            if (themeToggle.textContent.includes('☀') || themeToggle.textContent.includes('☽') || 
-                themeToggle.textContent.includes('\u2600') || themeToggle.textContent.includes('\u263D')) {
-                
-                const isDarkMode = localStorage.getItem("darkMode") === "true";
-                if (isDarkMode) {
-                    themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
-                    themeToggle.style.color = '#f39c12'; // Yellow/orange sun color
-                } else {
-                    themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
-                    themeToggle.style.color = '#34495e'; // Dark blue moon color
-                }
-                
-                // Center the icon inside the button
-                const icon = themeToggle.querySelector('i');
-                if (icon) {
-                    icon.style.display = 'flex';
-                    icon.style.alignItems = 'center';
-                    icon.style.justifyContent = 'center';
-                    icon.style.width = '100%';
-                    icon.style.height = '100%';
-                }
-            }
+            themeToggle.style.bottom = '20px';
+            themeToggle.style.right = '20px';
         }
         
         // Hide desktop links on mobile
@@ -179,24 +152,11 @@ document.addEventListener("DOMContentLoaded", function() {
                 );
             }
             
-            // Fix theme toggle position and appearance
+            // Fix theme toggle position
             const themeToggle = document.querySelector('button[style*="position: fixed"][style*="bottom:"][style*="right:"]');
             if (themeToggle) {
-                themeToggle.style.bottom = '15px';
-                themeToggle.style.right = '15px';
-                themeToggle.style.width = '40px';
-                themeToggle.style.height = '40px';
-                themeToggle.style.fontSize = '18px';
-                
-                // Ensure icon is properly centered
-                const icon = themeToggle.querySelector('i');
-                if (icon) {
-                    icon.style.display = 'flex';
-                    icon.style.alignItems = 'center';
-                    icon.style.justifyContent = 'center';
-                    icon.style.width = '100%';
-                    icon.style.height = '100%';
-                }
+                themeToggle.style.bottom = '20px';
+                themeToggle.style.right = '20px';
             }
         }, 300); // Short delay to allow the orientation to complete
     });

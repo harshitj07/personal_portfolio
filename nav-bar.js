@@ -117,9 +117,9 @@ customElements.define('nav-bar', NavBar);
 document.addEventListener("DOMContentLoaded", function () {
     const toggleButton = document.createElement("button");
     toggleButton.style.position = "fixed";
-    toggleButton.style.bottom = "15px";
-    toggleButton.style.right = "15px";
-    toggleButton.style.padding = "0"; // Removed padding to keep icon centered
+    toggleButton.style.bottom = "20px"; // Moved closer to bottom edge
+    toggleButton.style.right = "20px"; // Moved closer to right edge
+    toggleButton.style.padding = "12px";
     toggleButton.style.cursor = "pointer";
     toggleButton.style.fontSize = "20px";
     toggleButton.style.border = "none";
@@ -141,29 +141,18 @@ document.addEventListener("DOMContentLoaded", function () {
             root.style.setProperty("--midnight", "#222126");
             root.style.setProperty("--snow", "#edeef0");
             root.style.setProperty("--denim", "#373740");
-            
-            // Use FontAwesome sun icon instead of Unicode
-            toggleButton.innerHTML = '<i class="fas fa-sun"></i>';
+            toggleButton.innerHTML = "\u2600"; // Sun symbol for light mode
             toggleButton.style.background = "#f0f0f0";
-            toggleButton.style.color = "#f39c12"; // Yellow/orange sun color
+            toggleButton.style.color = "#000";
         } else {
             root.style.setProperty("--navy", "#f2ede4");
             root.style.setProperty("--midnight", "#c9bba5");
             root.style.setProperty("--snow", "#251a14");
             root.style.setProperty("--denim", "#5a5148");
-            
-            // Use FontAwesome moon icon instead of Unicode
-            toggleButton.innerHTML = '<i class="fas fa-moon"></i>';
+            toggleButton.innerHTML = "\u263D"; // Moon symbol for dark mode
             toggleButton.style.background = "#d6c4b5";
-            toggleButton.style.color = "#34495e"; // Dark blue moon color
+            toggleButton.style.color = "#4a3f37";
         }
-        
-        // Ensure the icon is perfectly centered
-        toggleButton.querySelector('i').style.display = 'flex';
-        toggleButton.querySelector('i').style.alignItems = 'center';
-        toggleButton.querySelector('i').style.justifyContent = 'center';
-        toggleButton.querySelector('i').style.width = '100%';
-        toggleButton.querySelector('i').style.height = '100%';
     }
 
     // Load the saved mode from localStorage (default to light mode if not set)
@@ -175,17 +164,6 @@ document.addEventListener("DOMContentLoaded", function () {
         const newDarkMode = !(localStorage.getItem("darkMode") === "true");
         localStorage.setItem("darkMode", newDarkMode);
         applyTheme(newDarkMode);
-        
-        // Add this to ensure icon is properly styled
-        setTimeout(() => {
-            if (toggleButton.querySelector('i')) {
-                toggleButton.querySelector('i').style.display = 'flex';
-                toggleButton.querySelector('i').style.alignItems = 'center';
-                toggleButton.querySelector('i').style.justifyContent = 'center';
-                toggleButton.querySelector('i').style.width = '100%';
-                toggleButton.querySelector('i').style.height = '100%';
-            }
-        }, 50);
     });
 
     // Enhanced mobile detection for better positioning
@@ -195,17 +173,11 @@ document.addEventListener("DOMContentLoaded", function () {
         
         // Theme toggle positioning
         if (isMobile) {
-            toggleButton.style.bottom = "15px";
-            toggleButton.style.right = "15px";
-            toggleButton.style.width = "40px";
-            toggleButton.style.height = "40px";
-            toggleButton.style.fontSize = "18px"; // Slightly smaller font on mobile
+            toggleButton.style.bottom = "20px";
+            toggleButton.style.right = "20px";
         } else {
             toggleButton.style.bottom = "30px";
             toggleButton.style.right = "30px";
-            toggleButton.style.width = "45px";
-            toggleButton.style.height = "45px";
-            toggleButton.style.fontSize = "20px";
         }
         
         // Menu toggle positioning
