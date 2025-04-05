@@ -1474,200 +1474,61 @@ z-index: 999;
     color: var(--snow);
 }
 
-/* Mobile-specific adjustments */
-/* Mobile-specific adjustments */
 @media screen and (max-width: 768px) {
+  /* Universal media styles */
+  img, video {
+      width: 70% !important;
+      height: auto !important;
+      margin: 10px auto 20px auto !important;
+      display: block !important;
+  }
+
   /* About Me Section */
   .me {
-      flex-direction: column; /* Stack image and text vertically */
+      flex-direction: column;
       align-items: center;
       text-align: center;
   }
 
   img.me {
-      width: 60%; /* Increase image size for consistency */
-      height: auto;
-      margin-bottom: 20px; /* Add spacing below the image */
+      width: 70% !important;
   }
 
-  p.fancy3 {
-      width: 90%; /* Adjust text width for better readability */
-      font-size: 1.1em; /* Slightly increase font size */
-  }
-
-  /* Gallery Images */
+  /* Gallery Section */
   div.gallery {
-      flex-direction: column; /* Stack images vertically */
+      flex-direction: column;
       align-items: center;
   }
 
-  img.gallery {
-      width: 70% !important; /* Reduce size slightly */
-      height: auto !important; /* Maintain aspect ratio */
-      margin: 10px auto !important; /* Center images and add spacing */
-      display: block !important; /* Ensure proper alignment */
+  div.gallery img.gallery {
+      width: 50% !important;
   }
 
-  /* Hide breaks in mobile view */
   .gallery br,
   .me br {
       display: none;
   }
 
+  /* Text Boxes */
+  p.fancy1,
+  p.fancy2,
+  p.fancy3,
+  .course .fancy3,
+  .resume-content,
+  .page-content {
+      width: 90% !important;
+      font-size: 1.1em;
+      margin: 0 auto;
+  }
+
   /* Skills Section */
   .course {
-      flex-direction: column; /* Stack skill boxes vertically */
+      flex-direction: column;
       align-items: center;
   }
 
-  .course .fancy3 {
-      width: 90%; /* Adjust width for better readability */
-      font-size: 1em; /* Keep font size consistent */
-  }
-
-  /* Resume Page */
+  /* Resume Section */
   img.resume {
-      width: 50%; /* Adjust image size for consistency */
-      height: auto;
-      margin-bottom: 15px; /* Add spacing below the image */
+      width: 70% !important;
   }
-
-  .resume-content {
-      width: 90%; /* Adjust content width for better readability */
-      font-size: 1em; /* Keep font size consistent */
-  }
-}
-
-/* Adjust image sizes for non-home pages */
-@media screen and (max-width: 768px) {
-    img.me, img.gallery, img.regular, img.resume {
-        width: 90%; /* Ensure consistent image size across all pages */
-        height: auto;
-        margin-bottom: 20px; /* Add spacing below the image */
-    }
-
-    .page-content, .resume-content {
-        width: 90%; /* Adjust content width for better readability */
-        font-size: 1.1em; /* Slightly increase font size */
-    }
-}
-
-/* Adjust image sizes on the home page */
-@media screen and (max-width: 768px) {
-    img.me, img.gallery {
-        width: 90%; /* Match the width of text boxes */
-        height: auto;
-        margin: 0 auto 20px auto; /* Center the images and add spacing below */
-        display: block;
-    }
-
-    p.fancy3 {
-        width: 90%; /* Ensure text boxes have the same width */
-    }
-}
-
-/* Adjust gallery image sizes for mobile view */
-@media screen and (max-width: 768px) {
-    div.gallery img.gallery {
-        width: 50% !important; /* Make gallery images much smaller */
-        height: auto !important; /* Maintain aspect ratio */
-        margin: 10px auto !important; /* Center images and add spacing */
-        display: block !important; /* Ensure proper alignment */
-    }
-}
-
-/* Adjust video size for mobile view */
-@media screen and (max-width: 768px) {
-    video {
-        width: 90%; /* Match the width of images */
-        height: auto;
-        margin: 0 auto 20px auto; /* Center the video and add spacing below */
-        display: block;
-    }
-}
-
-/* Force consistent image sizes in mobile view */
-@media screen and (max-width: 768px) {
-    img {
-        width: 80% !important; /* Reduce size slightly */
-        height: auto !important; /* Maintain aspect ratio */
-        margin: 10px auto !important; /* Center images and add spacing */
-        display: block !important; /* Ensure proper alignment */
-    }
-}
-
-/* Adjust all image, video, and gallery sizes for mobile view */
-@media screen and (max-width: 768px) {
-    img, video {
-        width: 70% !important; /* Reduce size by 5% */
-        height: auto !important; /* Maintain aspect ratio */
-        margin: 10px auto !important; /* Center and add spacing */
-        display: block !important; /* Ensure proper alignment */
-    }
-
-    div.gallery img.gallery {
-        width: 50% !important; /* Match gallery image size */
-        height: auto !important; /* Maintain aspect ratio */
-        margin: 10px auto !important; /* Center images and add spacing */
-        display: block !important; /* Ensure proper alignment */
-    }
-}
-
-/* Adjust text box width for work experience and education in mobile view */
-@media screen and (max-width: 768px) {
-    p.fancy1, p.fancy2 {
-        width: 90% !important; /* Increase width for better readability */
-        margin: 0 auto; /* Center the text boxes */
-    }
-}
-
-/* Ensure consistent scaling and touch-friendly elements */
-body {
-    touch-action: manipulation; /* Improve touch responsiveness */
-    -webkit-tap-highlight-color: transparent; /* Remove tap highlight on iOS */
-}
-
-/* Fix hover effects for touch devices */
-.mobile-menu a,
-.mobile-menu .submenu a {
-    color: var(--snow);
-    text-decoration: none;
-    transition: color 0.3s ease, background-color 0.3s ease;
-}
-
-.mobile-menu a:active,
-.mobile-menu .submenu a:active {
-    color: var(--denim);
-    background-color: rgba(255, 255, 255, 0.1);
-    border-radius: 5px;
-}
-
-/* Adjust dropdown menu behavior for touch devices */
-.dropdown-content a {
-    color: var(--snow);
-    text-decoration: none;
-    transition: color 0.3s ease, background-color 0.3s ease;
-}
-
-.dropdown-content a:active {
-    color: var(--denim);
-    background-color: rgba(255, 255, 255, 0.1);
-    border-radius: 5px;
-}
-
-/* Ensure proper scaling for iPhones */
-@media screen and (max-width: 768px) {
-    .navbar a,
-    .dropdown .dropbtn {
-        font-size: 18px;
-        padding: 12px 16px;
-    }
-
-    .fullscreen-menu a {
-        font-size: 1.2rem;
-    }
-
-    .fullscreen-menu .submenu a {
-        font-size: 1rem;
-    }
 }
