@@ -115,6 +115,25 @@ class NavBar extends HTMLElement {
 customElements.define('nav-bar', NavBar);
 
 document.addEventListener("DOMContentLoaded", function () {
+    // Force check mobile functionality on page load
+    const isMobile = window.innerWidth <= 768;
+  
+    // Debug mobile detection
+    console.log("Mobile detected:", isMobile);
+  
+    // Force mobile menu toggle to be visible on mobile devices
+    if (isMobile) {
+        const menuToggle = document.querySelector('.menu-toggle');
+        if (menuToggle) {
+            menuToggle.style.display = 'flex';
+        }
+        
+        const links = document.querySelector('.links');
+        if (links) {
+            links.style.display = 'none';
+        }
+    }
+
     const toggleButton = document.createElement("button");
     toggleButton.style.position = "fixed";
     toggleButton.style.bottom = "30px";

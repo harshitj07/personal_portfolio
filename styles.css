@@ -1533,88 +1533,54 @@ z-index: 999;
   }
 }
 
-/* Ensure the menu toggle is visible on mobile */
-.menu-toggle {
-    display: flex;
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    z-index: 1001;
-    cursor: pointer;
-}
+/* Force mobile styles to apply properly on specific small devices */
+@media screen and (max-width: 480px) {
+  html {
+    /* Force applying mobile styles */
+    overflow-x: hidden;
+    width: 100%;
+  }
+  
+  body {
+    /* Ensure body is constrained to viewport */
+    overflow-x: hidden;
+    width: 100%;
+    max-width: 100vw;
+  }
+  
+  /* Adjust hero section for mobile */
+  .hero-title {
+    font-size: 2.5rem !important;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.2rem !important;
+  }
+  
+  /* Force mobile menu to display properly */
+  .menu-toggle {
+    display: flex !important;
+    position: fixed !important;
+    top: 20px !important;
+    right: 20px !important;
+    z-index: 9999 !important;
+  }
+  
+  .navbar .links {
+    display: none !important;
+  }
 
-/* Fix fullscreen menu visibility */
-.fullscreen-menu {
-    transform: translateY(-100%);
-    opacity: 0;
-    transition: transform 0.3s ease, opacity 0.3s ease;
-}
+  /* Ensure images scale properly */
+  img {
+    max-width: 100% !important;
+    height: auto !important;
+  }
 
-.fullscreen-menu.active {
-    transform: translateY(0);
-    opacity: 1;
-}
-
-/* Ensure submenu toggles are styled properly */
-.fullscreen-menu .submenu-toggle {
-    cursor: pointer;
-    font-size: 1.2rem;
-    color: var(--snow);
-    margin: 1rem 0;
-    text-align: center;
-}
-
-.fullscreen-menu .submenu {
-    display: none;
-    flex-direction: column;
-    align-items: center;
-}
-
-.fullscreen-menu .submenu.active {
-    display: flex;
-}
-
-/* Fix dropdown content visibility on mobile */
-.dropdown-content {
-    display: none;
-}
-
-.dropdown-content.show {
-    display: block;
-}
-
-/* Ensure proper scaling for images and videos on mobile */
-@media screen and (max-width: 768px) {
-    img, video {
-        width: 100%;
-        height: auto;
-        margin: 10px auto;
-        display: block;
-    }
-
-    .me {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-    }
-
-    .gallery {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .gallery img {
-        width: 80%;
-    }
-
-    .course {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    p.fancy1, p.fancy2, p.fancy3 {
-        width: 90%;
-        font-size: 1.1em;
-        margin: 0 auto;
-    }
+  /* Force column layouts to stack on mobile */
+  .col-span-1, .col-span-2, .col-span-3, .col-span-4, 
+  .col-span-5, .col-span-6, .col-span-7, .col-span-8, 
+  .col-span-9, .col-span-10, .col-span-11, .col-span-12 {
+    grid-column: 1 / -1 !important;
+    width: 100% !important;
+  }
 }
