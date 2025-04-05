@@ -22,12 +22,24 @@ document.addEventListener("DOMContentLoaded", function() {
         // Ensure hamburger menu is visible in mobile mode only
         const menuToggle = document.querySelector('.menu-toggle');
         if (menuToggle) {
-            menuToggle.style.display = 'flex';
-            menuToggle.style.position = 'absolute';
-            menuToggle.style.top = '50%';
-            menuToggle.style.transform = 'translateY(-50%)';
-            menuToggle.style.right = '10px'; // Move closer to the right edge
-            menuToggle.style.zIndex = '1001';
+            // Force absolute positioning with stronger specificity
+            menuToggle.setAttribute('style', 
+                'position: absolute !important; ' +
+                'top: 50% !important; ' +
+                'right: 10px !important; ' + 
+                'transform: translateY(-50%) !important; ' +
+                'display: flex !important; ' +
+                'background: transparent !important; ' +
+                'padding: 0 !important; ' +
+                'z-index: 1001 !important;'
+            );
+        }
+        
+        // Fix theme toggle position for mobile
+        const themeToggle = document.querySelector('button[style*="position: fixed"][style*="bottom:"][style*="right:"]');
+        if (themeToggle) {
+            themeToggle.style.bottom = '20px';
+            themeToggle.style.right = '20px';
         }
         
         // Hide desktop links on mobile
@@ -121,5 +133,31 @@ document.addEventListener("DOMContentLoaded", function() {
                 grid.style.display = 'grid';
             });
         }
+    });
+    
+    // Add orientation change handling to fix positions after rotation
+    window.addEventListener('orientationchange', function() {
+        setTimeout(function() {
+            const menuToggle = document.querySelector('.menu-toggle');
+            if (menuToggle && window.innerWidth <= 768) {
+                menuToggle.setAttribute('style', 
+                    'position: absolute !important; ' +
+                    'top: 50% !important; ' +
+                    'right: 10px !important; ' + 
+                    'transform: translateY(-50%) !important; ' +
+                    'display: flex !important; ' +
+                    'background: transparent !important; ' +
+                    'padding: 0 !important; ' +
+                    'z-index: 1001 !important;'
+                );
+            }
+            
+            // Fix theme toggle position
+            const themeToggle = document.querySelector('button[style*="position: fixed"][style*="bottom:"][style*="right:"]');
+            if (themeToggle) {
+                themeToggle.style.bottom = '20px';
+                themeToggle.style.right = '20px';
+            }
+        }, 300); // Short delay to allow the orientation to complete
     });
 });

@@ -117,8 +117,8 @@ customElements.define('nav-bar', NavBar);
 document.addEventListener("DOMContentLoaded", function () {
     const toggleButton = document.createElement("button");
     toggleButton.style.position = "fixed";
-    toggleButton.style.bottom = "30px";
-    toggleButton.style.right = "30px";
+    toggleButton.style.bottom = "20px"; // Moved closer to bottom edge
+    toggleButton.style.right = "20px"; // Moved closer to right edge
     toggleButton.style.padding = "12px";
     toggleButton.style.cursor = "pointer";
     toggleButton.style.fontSize = "20px";
@@ -166,27 +166,43 @@ document.addEventListener("DOMContentLoaded", function () {
         applyTheme(newDarkMode);
     });
 
-    // Ensure menu toggle is properly shown/hidden based on screen size
-    function updateMenuToggleVisibility() {
+    // Enhanced mobile detection for better positioning
+    function updateUIForDevice() {
+        const isMobile = window.innerWidth <= 768;
+        const isSmallMobile = window.innerWidth <= 480;
+        
+        // Theme toggle positioning
+        if (isMobile) {
+            toggleButton.style.bottom = "20px";
+            toggleButton.style.right = "20px";
+        } else {
+            toggleButton.style.bottom = "30px";
+            toggleButton.style.right = "30px";
+        }
+        
+        // Menu toggle positioning
         const menuToggle = document.querySelector('.menu-toggle');
         if (!menuToggle) return;
         
-        const isMobile = window.innerWidth <= 768;
         menuToggle.style.display = isMobile ? 'flex' : 'none';
         
         if (isMobile) {
-            // Keep the toggle in the header, not fixed
             menuToggle.style.position = 'absolute';
             menuToggle.style.top = '50%';
-            menuToggle.style.right = '10px'; // Closer to edge
+            menuToggle.style.right = '10px';
             menuToggle.style.transform = 'translateY(-50%)';
             menuToggle.style.background = 'transparent';
+            menuToggle.style.zIndex = '1001';
         }
     }
     
     // Run on initial load and when window is resized
-    updateMenuToggleVisibility();
-    window.addEventListener('resize', updateMenuToggleVisibility);
+    updateUIForDevice();
+    window.addEventListener('resize', updateUIForDevice);
+    window.addEventListener('orientationchange', updateUIForDevice);
+    
+    // Set positions again after a short delay to ensure they override any other styles
+    setTimeout(updateUIForDevice, 500);
 });
 
 /**
@@ -201,14 +217,17 @@ document.addEventListener("DOMContentLoaded", function () {
         if (!menuToggle) return;
         
         if (isMobile) {
-            // Position at the very right edge
-            menuToggle.style.position = 'absolute';
-            menuToggle.style.top = '50%';
-            menuToggle.style.transform = 'translateY(-50%)';
-            menuToggle.style.right = '10px'; // Very right positioning
-            menuToggle.style.display = 'flex';
-            menuToggle.style.background = 'transparent';
-            menuToggle.style.padding = '0';
+            // Force the position to be absolute with !important-like specificity
+            menuToggle.setAttribute('style', 
+                'position: absolute !important; ' +
+                'top: 50% !important; ' +
+                'right: 10px !important; ' + 
+                'transform: translateY(-50%) !important; ' +
+                'display: flex !important; ' +
+                'background: transparent !important; ' +
+                'padding: 0 !important; ' +
+                'z-index: 1001 !important;'
+            );
         }
     }
     
@@ -220,4 +239,12 @@ document.addEventListener("DOMContentLoaded", function () {
     
     // Run again after a small delay to override any other scripts
     setTimeout(fixTogglePosition, 500);
+    
+    // Also run on orientation change which is important for mobile
+    window.addEventListener('orientationchange', fixTogglePosition);
+    
+    // Run several times to catch any CSS that might be overriding our styles
+    setTimeout(fixTogglePosition, 100);
+    setTimeout(fixTogglePosition, 500);
+    setTimeout(fixTogglePosition, 1000);
 })();
