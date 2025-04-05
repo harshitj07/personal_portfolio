@@ -1356,7 +1356,7 @@ z-index: 999;
     font-size: 1.5rem;
     color: var(--snow);
     text-decoration: none;
-    margin: 1rem 0;/
+    margin: 1rem 0;
     font-family: 'DM Serif Text', serif;
     font-weight: 600;
     transition: color 0.3s ease;
@@ -1475,65 +1475,67 @@ z-index: 999;
 }
 
 /* Mobile-specific adjustments */
+/* Mobile-specific adjustments */
 @media screen and (max-width: 768px) {
-    /* About Me Section */
-    .me {
-        flex-direction: column; /* Stack image and text vertically */
-        align-items: center;
-        text-align: center;
-    }
+  /* About Me Section */
+  .me {
+      flex-direction: column; /* Stack image and text vertically */
+      align-items: center;
+      text-align: center;
+  }
 
-    img.me {
-        width: 60%; /* Increase image size */consistency */
-        height: auto;
-        margin-bottom: 20px; /* Add spacing below the image */
-    }
+  img.me {
+      width: 60%; /* Increase image size for consistency */
+      height: auto;
+      margin-bottom: 20px; /* Add spacing below the image */
+  }
 
-    p.fancy3 {
-        width: 90%; /* Adjust text width for better readability */
-        font-size: 1.1em; /* Slightly increase font size */
-    }
+  p.fancy3 {
+      width: 90%; /* Adjust text width for better readability */
+      font-size: 1.1em; /* Slightly increase font size */
+  }
 
-    /* Gallery Images */
-    div.gallery {
-        flex-direction: column; /* Stack images vertically */
-        align-items: center;
-    }
+  /* Gallery Images */
+  div.gallery {
+      flex-direction: column; /* Stack images vertically */
+      align-items: center;
+  }
 
-    img.gallery {
-        width: 70% !important; /* Reduce size slightly */
-        height: auto !important; /* Maintain aspect ratio */
-        margin: 10px auto !important; /* Center images and add spacing */
-        display: block !important; /* Ensure proper alignment */
-    }
+  img.gallery {
+      width: 70% !important; /* Reduce size slightly */
+      height: auto !important; /* Maintain aspect ratio */
+      margin: 10px auto !important; /* Center images and add spacing */
+      display: block !important; /* Ensure proper alignment */
+  }
 
-    /* Skills Section */
-    .course {
-        flex-direction: column; /* Stack skill boxes vertically */
-        align-items: center;
-    }
+  /* Hide breaks in mobile view */
+  .gallery br,
+  .me br {
+      display: none;
+  }
 
-    .course .fancy3 {
-        width: 90%; /* Adjust width for better readability */
-        font-size: 1em; /* Keep font size consistent */
-    }
+  /* Skills Section */
+  .course {
+      flex-direction: column; /* Stack skill boxes vertically */
+      align-items: center;
+  }
 
-    /* Remove unnecessary breaks */    /* Resume Page */
+  .course .fancy3 {
+      width: 90%; /* Adjust width for better readability */
+      font-size: 1em; /* Keep font size consistent */
+  }
 
+  /* Resume Page */
+  img.resume {
+      width: 50%; /* Adjust image size for consistency */
+      height: auto;
+      margin-bottom: 15px; /* Add spacing below the image */
+  }
 
-
-
-
-}    }        display: none; /* Hide breaks in mobile view */    .gallery br, .me br {    img.resume {
-        width: 50%; /* Adjust image size for consistency */
-        height: auto;
-        margin-bottom: 15px; /* Add spacing below the image */
-    }
-
-    .resume-content {
-        width: 90%; /* Adjust content width for better readability */
-        font-size: 1em; /* Keep font size consistent */
-    }
+  .resume-content {
+      width: 90%; /* Adjust content width for better readability */
+      font-size: 1em; /* Keep font size consistent */
+  }
 }
 
 /* Adjust image sizes for non-home pages */
