@@ -165,5 +165,59 @@ document.addEventListener("DOMContentLoaded", function () {
         localStorage.setItem("darkMode", newDarkMode);
         applyTheme(newDarkMode);
     });
+
+    // Ensure menu toggle is properly shown/hidden based on screen size
+    function updateMenuToggleVisibility() {
+        const menuToggle = document.querySelector('.menu-toggle');
+        if (!menuToggle) return;
+        
+        const isMobile = window.innerWidth <= 768;
+        menuToggle.style.display = isMobile ? 'flex' : 'none';
+        
+        if (isMobile) {
+            // Keep the toggle in the header, not fixed
+            menuToggle.style.position = 'absolute';
+            menuToggle.style.top = '50%';
+            menuToggle.style.right = '10px'; // Closer to edge
+            menuToggle.style.transform = 'translateY(-50%)';
+            menuToggle.style.background = 'transparent';
+        }
+    }
+    
+    // Run on initial load and when window is resized
+    updateMenuToggleVisibility();
+    window.addEventListener('resize', updateMenuToggleVisibility);
 });
 
+/**
+ * This script specifically ensures the 3-line toggle stays positioned correctly
+ */
+(function() {
+    // Function to adjust the toggle position
+    function fixTogglePosition() {
+        const isMobile = window.innerWidth <= 768;
+        const menuToggle = document.querySelector('.menu-toggle');
+        
+        if (!menuToggle) return;
+        
+        if (isMobile) {
+            // Position at the very right edge
+            menuToggle.style.position = 'absolute';
+            menuToggle.style.top = '50%';
+            menuToggle.style.transform = 'translateY(-50%)';
+            menuToggle.style.right = '10px'; // Very right positioning
+            menuToggle.style.display = 'flex';
+            menuToggle.style.background = 'transparent';
+            menuToggle.style.padding = '0';
+        }
+    }
+    
+    // Run when DOM is loaded
+    document.addEventListener("DOMContentLoaded", fixTogglePosition);
+    
+    // Also run on resize in case anything tries to change it
+    window.addEventListener('resize', fixTogglePosition);
+    
+    // Run again after a small delay to override any other scripts
+    setTimeout(fixTogglePosition, 500);
+})();

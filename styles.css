@@ -1087,14 +1087,15 @@ Source: https://www.sliderrevolution.com/resources/css-button-hover-effects/ -> 
 -----------------------
 */
 
+/* Update menu toggle positioning to be at the very right */
 .menu-toggle {
   position: absolute;
   top: 50%;
-  right: 30px;
+  right: 10px; /* Move closer to the right edge */
   transform: translateY(-50%);
   width: 24px;
   height: 18px;
-  display: flex;
+  display: none;
   flex-direction: column;
   justify-content: space-between;
   cursor: pointer;
@@ -1204,6 +1205,29 @@ Source: https://www.sliderrevolution.com/resources/css-button-hover-effects/ -> 
 }
 
 /* Media query for mobile devices */
+@media screen and (max-width: 768px) {
+  /* ...existing code... */
+  
+  /* Ensure proper header layout with more space on the right */
+  header {
+    position: relative;
+    padding: 1.5em 40px 1.5em 1.5em; /* Increase right padding to make room */
+  }
+  
+  /* Reset the fixed positioning for the menu toggle */
+  .menu-toggle {
+    display: flex;
+    position: absolute !important; /* Override any fixed positioning */
+    top: 50% !important; /* Center vertically in header */
+    right: 10px !important; /* Very close to the right edge */
+    transform: translateY(-50%) !important;
+    background: transparent; /* No background */
+    padding: 0; /* No padding */
+  }
+  
+  /* ...existing code... */
+}
+
 @media screen and (max-width: 768px) {
   .menu-toggle {
       display: flex;
@@ -1602,6 +1626,15 @@ z-index: 999;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
+  }
+  
+  /* Force menu toggle back to its proper position */
+  .menu-toggle {
+    position: absolute !important;
+    top: 50% !important;
+    right: 10px !important;
+    transform: translateY(-50%) !important;
+    z-index: 9999 !important;
   }
 }
 
