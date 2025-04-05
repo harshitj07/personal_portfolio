@@ -311,7 +311,7 @@ button:not(.dropbtn):not(.navlink),
   border: none;
   border-radius: 6px;
   padding: 10px 20px;
-  font-family: 'Nunito', sans-serif; /* Change font to Nunito */
+  font-family: 'Nunito', sans-serif;
   font-size: 0.95rem;
   font-weight: 500;
   cursor: pointer;
@@ -331,8 +331,8 @@ button:not(.dropbtn):not(.navlink),
 .submit:hover, 
 button:not(.dropbtn):not(.navlink):hover, 
 .btn:hover {
-  background-color: var(--snow); /* Restored hover background */
-  color: var (--navy); /* Restored hover text color */
+  background-color: var(--snow);
+  color: var(--navy);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
   transform: translateY(-2px);
 }
@@ -348,7 +348,7 @@ button:not(.dropbtn):not(.navlink):active,
 :root[style*="--navy: #f2ede4"] .submit,
 :root[style*="--navy: #f2ede4"] button:not(.dropbtn):not(.navlink),
 :root[style*="--navy: #f2ede4"] .btn {
-  background-color: #5a5148; /* Darker shade for better contrast in light mode */
+  background-color: #5a5148;
   color: #f2ede4;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
@@ -356,8 +356,8 @@ button:not(.dropbtn):not(.navlink):active,
 :root[style*="--navy: #f2ede4"] .submit:hover,
 :root[style*="--navy: #f2ede4"] button:not(.dropbtn):not(.navlink):hover,
 :root[style*="--navy: #f2ede4"] .btn:hover {
-  background-color: #3a2518; /* Restored hover background for light mode */
-  color: #f2ede4; /* Restored hover text color for light mode */
+  background-color: #3a2518;
+  color: #f2ede4;
 }
 
 /* Contact form specific button */
@@ -1531,4 +1531,90 @@ z-index: 999;
   img.resume {
       width: 70% !important;
   }
+}
+
+/* Ensure the menu toggle is visible on mobile */
+.menu-toggle {
+    display: flex;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1001;
+    cursor: pointer;
+}
+
+/* Fix fullscreen menu visibility */
+.fullscreen-menu {
+    transform: translateY(-100%);
+    opacity: 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.fullscreen-menu.active {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+/* Ensure submenu toggles are styled properly */
+.fullscreen-menu .submenu-toggle {
+    cursor: pointer;
+    font-size: 1.2rem;
+    color: var(--snow);
+    margin: 1rem 0;
+    text-align: center;
+}
+
+.fullscreen-menu .submenu {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+}
+
+.fullscreen-menu .submenu.active {
+    display: flex;
+}
+
+/* Fix dropdown content visibility on mobile */
+.dropdown-content {
+    display: none;
+}
+
+.dropdown-content.show {
+    display: block;
+}
+
+/* Ensure proper scaling for images and videos on mobile */
+@media screen and (max-width: 768px) {
+    img, video {
+        width: 100%;
+        height: auto;
+        margin: 10px auto;
+        display: block;
+    }
+
+    .me {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .gallery {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .gallery img {
+        width: 80%;
+    }
+
+    .course {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    p.fancy1, p.fancy2, p.fancy3 {
+        width: 90%;
+        font-size: 1.1em;
+        margin: 0 auto;
+    }
 }
