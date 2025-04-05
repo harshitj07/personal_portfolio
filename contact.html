@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">    
+    <meta name="description" content="This is my personal portfolio.">
+    <meta name="author" content="Harshit Jain">    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@100&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=GFS+Didot&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300&display=swap" rel="stylesheet">
+    
+	<!-- Linking the stylesheet -->
+    <link rel="stylesheet" href="styles.css">
+    <script src="nav-bar.js"></script>
+    
+	<style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0;
+            padding: 0;
+            width: 100%;
+        }
+        
+        header, footer {
+            width: 100%;
+        }
+        
+        h2 {
+            text-align: center;
+            width: 100%;
+        }
+        
+        .center-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            padding: 0 20px;
+            box-sizing: border-box;
+        }
+        
+        .me {
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+        }
+        
+        #contactForm {
+            width: 100%;
+        }
+        
+        /* Form element styling */
+        .error {
+            color: #ff0000;
+            font-size: 0.9em;
+            margin-top: 5px;
+            display: block;
+        }
+        
+        .form-control {
+            margin-bottom: 20px;
+            width: 100%;
+        }
+        
+        input, textarea {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+            margin-top: 5px;
+        }
+        
+		/* Error Checking Styling */
+        input.invalid, textarea.invalid {
+            border: 1px solid #ff0000;
+        }
+        
+        .success-message {
+            color: #06402B;
+            font-weight: bold;
+            margin-top: 15px;
+            display: none;
+            text-align: center;
+            width: 100%;
+        }
+        
+        .loading {
+            display: none;
+            margin-top: 10px;
+            text-align: center;
+            width: 100%;
+        }
+        
+        .submit-container {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            margin-top: 20px;
+        }
+		
+		/* Input box styling */
+		select.frmInput {
+			border: 3px solid var(--denim);
+			border-radius: 5px;
+			margin: 10px;
+			height: 50px;
+			width: 100px;
+			text-align: center;
+		}	
+
+		select.frmInput:hover,
+		select.frmInput:focus-visible {
+		    border: 5px solid var(--navy);
+		    outline-offset: .1em;
+		    background-color: #e6f1fc;
+		  	color: black;
+		}
+
+		select.frmInput:active {
+		    background: var(--denim);
+		    color: black;
+		}
+
+		::placeholder, option, textarea, input, select {
+			font-family: 'Nunito', sans-serif;
+		}
+    </style>
+</head>
+<body>
+    <!--Navbar -->
+    <header>
+        <nav-bar></nav-bar>
+    </header>
+    
+    <div class="center-container">
+        <br>
+        <br>
+		
+		<!-- Javascript Form -->
+        <h2>Contact Me</h2>
+        <br>
+        
+        <div class="me">
+            <form id="contactForm">
+                <div class="form-control">
+                    <p for="firstName">First Name *</p>
+                    <input type="text" id="firstName" required>
+                    <span class="error" id="firstNameError"></span>
+                </div>
+                <div class="form-control">
+                    <p for="lastName">Last Name *</p>
+                    <input type="text" id="lastName" required>
+                    <span class="error" id="lastNameError"></span>
+                </div>
+                <div class="form-control">
+                    <p for="email">Email *</p>
+                    <input type="email" id="email" required>
+                    <span class="error" id="emailError"></span>
+                </div>
+                <div class="form-control">
+                    <p for="subject">Subject</p>
+                    <input type="text" id="subject">
+                    <span class="error" id="subjectError"></span>
+                </div>
+                <div class="form-control">
+                    <p for="message">Message</p>
+                    <textarea id="message" rows="4"></textarea>
+                    <span class="error" id="messageError"></span>
+                </div>
+                <div class="submit-container">
+                    <button type="submit" id="submitBtn" class="submit">SEND</button>
+                </div>
+				<br>
+                <div class="loading" id="loadingIndicator">Sending your message...</div>
+                <div class="success-message" id="successMessage">Your message was sent successfully!</div>
+            </form>
+        </div>
+		
+		<script>
+			// EmailJS configuration
+			// Credentials can be found once account is created for EmailJS
+			const emailjsConfig = {
+				serviceID: '7jainharshit',
+				templateID: 'template123',
+				userID: 'r7ovW7-7vGOAM7xLA'
+			};
+
+			// Form validation functions
+			function validateName(name) {
+				return name.trim().length >= 2;
+			}
+
+			function validateEmail(email) {
+				const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+				return emailRegex.test(email);
+			}
+
+			function showError(inputElement, errorElement, message) {
+				inputElement.classList.add('invalid');
+				errorElement.textContent = message;
+				return false;
+			}
+
+			function clearError(inputElement, errorElement) {
+				inputElement.classList.remove('invalid');
+				errorElement.textContent = '';
+			}
+
+			// Form submission handling
+			document.getElementById('contactForm').addEventListener('submit', function(event) {
+				event.preventDefault();
+				let isValid = true;
+
+				// Get form elements
+				const firstName = document.getElementById('firstName');
+				const lastName = document.getElementById('lastName');
+				const email = document.getElementById('email');
+				const subject = document.getElementById('subject');
+				const message = document.getElementById('message');
+
+				// Clear previous errors
+				document.querySelectorAll('.error').forEach(el => el.textContent = '');
+				document.querySelectorAll('input, textarea').forEach(el => el.classList.remove('invalid'));
+
+				// Validate first name
+				if (!validateName(firstName.value)) {
+					isValid = showError(firstName, document.getElementById('firstNameError'), 'Please enter a valid first name (at least 2 characters)');
+				} else {
+					clearError(firstName, document.getElementById('firstNameError'));
+				}
+
+				// Validate last name
+				if (!validateName(lastName.value)) {
+					isValid = showError(lastName, document.getElementById('lastNameError'), 'Please enter a valid last name (at least 2 characters)');
+				} else {
+					clearError(lastName, document.getElementById('lastNameError'));
+				}
+
+				// Validate email
+				if (!validateEmail(email.value)) {
+					isValid = showError(email, document.getElementById('emailError'), 'Please enter a valid email address');
+				} else {
+					clearError(email, document.getElementById('emailError'));
+				}
+
+				// Validate subject and message
+				if (subject.value.trim() !== '' && subject.value.trim().length < 3) {
+					isValid = showError(subject, document.getElementById('subjectError'), 'Subject should be at least 3 characters');
+				}
+
+				if (message.value.trim() !== '' && message.value.trim().length < 10) {
+					isValid = showError(message, document.getElementById('messageError'), 'Message should be at least 10 characters');
+				}
+
+				// If form is valid, submit it
+				if (isValid) {
+					// Show loading indicator
+					document.getElementById('loadingIndicator').style.display = 'block';
+					document.getElementById('submitBtn').disabled = true;
+
+					// Prepare form data
+					let formData = {
+						firstName: firstName.value,
+						lastName: lastName.value,
+						email: email.value,
+						subject: subject.value || 'No Subject',
+						message: message.value || 'No Message',
+					};
+
+					// Send the email using EmailJS
+					fetch('https://api.emailjs.com/api/v1.0/email/send', {
+						method: 'POST',
+						headers: { 'Content-Type': 'application/json' },
+						body: JSON.stringify({
+							service_id: emailjsConfig.serviceID,
+							template_id: emailjsConfig.templateID,
+							user_id: emailjsConfig.userID,
+							template_params: formData
+						})
+					})
+					.then(response => {
+						if (response.ok) {
+							// Success message
+							document.getElementById('loadingIndicator').style.display = 'none';
+							document.getElementById('successMessage').style.display = 'block';
+							document.getElementById('contactForm').reset();
+							document.getElementById('submitBtn').disabled = false;
+
+							setTimeout(() => {
+								document.getElementById('successMessage').style.display = 'none';
+							}, 5000);
+						} else {
+							throw new Error(`HTTP error! Status: ${response.status}`);
+						}
+					})
+					.catch(error => {
+						document.getElementById('loadingIndicator').style.display = 'none';
+						document.getElementById('submitBtn').disabled = false;
+						alert('Failed to send email. Please try again later.');
+						console.error('Error:', error);
+					});
+				}
+			});
+		</script>
+		<br>
+		<br>
+		
+		<!-- Quotes -->
+		<h2>Inspirational Quotes</h2>
+		<div class="quotes-container">
+			<div class="quote-card">
+				<div class="quote-image">
+					<img src="images/theodoreroosevelt.jpg" alt="Theodore Roosevelt">
+				</div>
+				<div class="quote-content">
+					<blockquote>
+						"Believe you can and you're halfway there."
+					</blockquote>
+					<cite>- Theodore Roosevelt</cite>
+				</div>
+			</div>
+
+			<div class="quote-card">
+				<div class="quote-content">
+					<blockquote>
+						"You never fail until you stop trying."
+					</blockquote>
+					<cite>- Albert Einstein</cite>
+				</div>
+				<div class="quote-image">
+					<img src="images/alberteinstein.jpg" alt="Albert Einstein">
+				</div>
+			</div>
+
+			<div class="quote-card">
+				<div class="quote-image">
+					<img src="images/marktwain.jpg" alt="Mark Twain">
+				</div>
+				<div class="quote-content">
+					<blockquote>
+						"The secret of getting ahead, is getting started."
+					</blockquote>
+					<cite>- Mark Twain</cite>
+				</div>
+			</div>
+		</div>
+		<br>	
+        <br>
+        <br>
+    </div>
+    
+    <!-- footer -->
+    <footer>
+        <p>This site was created as a personal portfolio. You can contact me at<a class="mail" href="mailto:1jainhar@hdsb.ca">1jainhar@hdsb.ca</a>or 905-802-2902.</p>
+		<p>&copy; 2025 Harshit Jain. All rights reserved.</p>
+    </footer>
+</body>
+</html>

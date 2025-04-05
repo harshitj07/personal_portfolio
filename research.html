@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">	
+	
+	<meta name="description" content="This is my personal portfolio.">
+	<meta name="author" content="Harshit Jain">	
+	
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@100&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=GFS+Didot&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300&display=swap" rel="stylesheet">
+
+	<!-- Linking the stylesheet -->
+	<link rel="stylesheet" href="styles.css">
+	<script src="nav-bar.js"></script>
+</head>
+<body>
+	<!--Navbar -->
+	<header>
+		<nav-bar></nav-bar>
+	</header>
+	
+	<br>
+	<br>
+	
+	<!-- Match Predictions -->
+	<h2>Match Predictions</h2>
+	<div class="me" style="display: flex; justify-content: space-between; align-items: center;">
+		<div>
+			<div style="text-align: center;">
+				<img class="regular" src="images/soccer.jpg" style="height: 50%; width: 50%;">
+			</div>
+			<p class="fancy3">
+				The 2022 FIFA World Cup, held in Qatar from November 20 to December 18 was a monumental sporting event that concluded with the triumph of Argentina against the holding champions France in the final. This project aimed to predict the outcomes of the tournament using a machine learning model developed using Python in Microsoft Visual Code. The model analyzed historical World Cup data, player ratings, and team performances in order to predict the outcome of each round. The methodology involved importing and cleaning data from previous World Cups, assessing the player ratings from FIFA 23, and calculating team strengths based on historical goal data. The model’s predictions were compared to the actual tournament that took place in 2022. The machine learning model was quite effective in the early stages of the tournament but became less accurate in the later stages. This helps conclude that the model’s ability to identify stronger teams in the early stages was effective although it wasn’t enough to predict the outcomes near the end of the tournament as there were data limitations that covered dynamic factors such as injuries and formations. Future improvements could include incorporating more sophisticated techniques and real-time data to enhance the predictive nature of the algorithm. This study helps demonstrate the potential of machine learning in sports, while also suggesting further research of avenues that will help strengthen the strong base that has been created with this machine learning model.
+			</p>
+		</div>
+	</div>
+	<br>
+	<div style="display: flex; justify-content: center; align-items: center;">
+    	<a href="files/soccer.pdf" download>
+       		<button class="submit">Download File</button>
+    	</a>
+	</div>
+	<br>
+	<br>
+	
+	<!-- Local Issue Project -->
+	<h2>Local Issue Project</h2>
+	<div class="me" style="display: flex; justify-content: space-between; align-items: center;">
+		<div>
+			<div style="text-align: center;">
+				<img class="regular" src="images/stocks.jpg" style="height: 50%; width: 50%;">
+			</div>
+			<p class="fancy3">
+				The stock market is in a constant flux and events occur daily that may impact the performance of your trusted investments. This project aims to predict stock prices using a machine learning model. Using historical stock price data from Yahoo Finance, a Long Short-Term Memory (LSTM) neural network model was developed using Python and PyCharm. The model, trained on over a decade’s worth of data for Apple Inc. (AAPL), helps predict the past 60 days and compare it to the actual day-to-day prices over the period. This helps show the accuracy of the model and how trust-worthy it actually is. The model also predicts one day into the future so that you can make your decision on whether you should sell, hold, or buy your desired stock. From my results, I was able to gather that the program is quite proficient at predicting periods of 60 days when using test data, however it struggles when predicting a day into the future considering how it is often majorly affected by external factors such as the news round the market and the company’s performance. The results from this data help show the potential and limitations behind machine learning in the field of finance. It also suggests future enhancements such as longer prediction periods, the incorporation of external news, and an improved interface. Additionally, a good way to help increase the accuracy of the program is to compare it to other models and see how real-time data integration can be used to enhance the accuracy and usability of the model for practical investment decisions.
+			</p>
+		</div>
+	</div>
+	<br>
+	<div style="display: flex; justify-content: center; align-items: center;">
+    	<a href="files/stocks.pdf" download>
+       		<button class="submit">Download File</button>
+    	</a>
+	</div>
+	<br>
+	<br>
+
+	<!-- footer -->
+	<footer>
+		<p>This site was created for ICS4UQ-01. You can contact me at<a class="mail" href="mailto:1jainhar@hdsb.ca">1jainhar@hdsb.ca</a>or 905-802-2902.</p>
+	</footer>
+	
+</body>
+</html>

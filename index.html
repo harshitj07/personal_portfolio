@@ -1,76 +1,158 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<title>DH INC.</title>
-	<link rel="preconnect" href="https://fonts.gstatic.com">
-	<link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" href="css/chrg.css">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<meta charset="utf-8">	
+	
+	<meta name="description" content="This is my personal portfolio.">
+	<meta name="author" content="Harshit Jain">	
+	
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@100&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=GFS+Didot&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+	<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+	<!-- Linking the stylesheet -->
+	<link rel="stylesheet" href="styles.css">
+	<script src="nav-bar.js"></script>
 </head>
-<body>
-
-	<!-- header element -->
+<body id="home-page">
+	<!--Navbar -->
 	<header>
-		<img src="img/ThermoCHRG Logo.png" width="200" hight="200">
-		<h1>DH INC.</h1>
+		<nav-bar></nav-bar>
 	</header>
-
-	<!-- main element -->
-	<main>
-
-		<!-- nav bar -->
-	<div class="topnav" id="myTopnav">
-  	<a href="https://harshitj07.github.io/thermochrg/" class="active">Home</a>
-  	<a href="https://harshitj07.github.io/thermochrg/products">Products</a>
-  	<a href="https://harshitj07.github.io/thermochrg/news">News</a>
-  	<a href="https://harshitj07.github.io/thermochrg/about">About & Contact</a>
-  	<a href="javascript:void(0);" class="icon" onclick="myFunction()">
-    	<i class="fa fa-bars"></i>
-  </a>
+	
+	<section class="hero-banner">
+		<div class="hero-content">
+			<h1 class="hero-title">Hi, I'm Harshit!</h1>
+			<p class="hero-subtitle">Explore My Journey into the Field of STEM and Beyond</p>
+		</div>
+	</section>
+	
+	<!-- About Me -->
+	<br>
+	<br>
+	<h2>About Me</h2>
+	<div class="me">
+		<img class="me" src="images/me.jpeg"></img>
+		<p class="fancy3">
+			I am a proud student at Aldershot High School, and in this portfolio, I strive to present a collection of my most notable projects, both personal and from the I-STEM program. These works help illustrate my journey and passion for learning, innovation, and problem-solving. Alongside my projects, you will find my resume which offers a deeper insight into my character, aspirations, and the goals I've set for myself. Driven by a desire for excellence, I hope to pursue an advanced education and ultimately become an engineer. This portfolio highlights my high school experiences and the steps I have taken to pave my path toward success. Dive in to see how my dedication and hard work have shaped my ambitions and prepared me for the exciting challenges I hope to take part in ahead of me. 
+		</p>
 	</div>
-
-	<script>
-		function myFunction() {
-  			var x = document.getElementById("myTopnav");
-  			if (x.className === "topnav") {
-   			 x.className += " responsive";
-  		} else {
-    		x.className = "topnav";
-  		}
-	}
-	</script>
+	<br>
+	
+	<!-- Skills -->
+<h2>Skills</h2>
+<div class="course">
+    <div id="container">
+    <div class="grid">
+        <div class="col-span-4">
+            <p class="fancy3">
+				<br>
+                <i class="fas fa-users skill-icon"></i><br><br> Excellent teamwork and collaboration.
+            </p>
+        </div>    
+        <div class="col-span-4">
+            <p class="fancy3">
+				<br>
+                <i class="fas fa-flag skill-icon"></i><br><br> Confident and assertive leadership skills.
+            </p>
+        </div>
+        <div class="col-span-4">
+            <p class="fancy3">
+				<br>
+                <i class="fas fa-lightbulb skill-icon"></i><br><br> Strong work ethic demonstrating effective problem solving skills.
+            </p>
+        </div>    
+        <div class="col-span-4">
+            <p class="fancy3">
+				<br>
+                <i class="fas fa-comments skill-icon"></i><br><br> Exceptional written and verbal communication skills.
+            </p>
+        </div>
+        <div class="col-span-4">
+            <p class="fancy3">
+				<br>
+                <i class="fas fa-atom skill-icon"></i><br><br> Advanced knowledge of STEM based concepts and technology.
+            </p>
+        </div>    
+        <div class="col-span-4">
+            <p class="fancy3">
+				<br>
+                <i class="fas fa-tasks skill-icon"></i><br><br> Strong organizational skills and focused mindset.
+            </p>
+        </div>    
+    </div>
+    </div>
+</div>
+<br>
+<br>
+	
+	<!-- Image Gallery -->
+	<h2>Hobbies</h2>
+	<div class="gallery">
+		<br>
+		<img class="gallery" src="images/msn.jpg">
+		<img class="gallery" src="images/coding.jpg">
+		<img class="gallery" src="images/apple.png">
+		<br>
+	</div>
+	<div class="gallery">
+		<br>
+		<img class="gallery" src="images/math.jpg">
+		<img class="gallery" src="images/photography.jpg">
+		<img class="gallery" src="images/books.jpeg">
+		<br>
+	</div>
+	<br>
+	
+	<!-- Testemonials -->
+	<h2>Testemonials</h2>
+	<div class="me">
+		<div id="container">
+			<div class="grid">
+				<div class="col-span-4">
+					<p class="fancy3">
+						<br>
+						"Harshit is not only academically gifted but also possesses a strong sense of integrity and responsibility. He is always willing to lend a hand to his classmates, embodying the spirit of teamwork while maintaining a strong sense of individuality."
+						<br>
+						<br>
+						- Aleksandar Dragicevic (Gr. 10 Civics/Career and Gr. 11 IDC Teacher)
+					</p>
+				</div>	
+				<div class="col-span-4">
+					<p class="fancy3">
+						<br>
+						<br>
+						"I can confidently say that Harshit has the skills, motivation, and characteristic qualities to achieve success in his endeavours. He is a quiet leader, well respected by his peers."
+						<br>
+						<br>
+						- Michael Pitt (Gr. 11 and 12 Chemistry Teacher)
+					</p>
+				</div>
+				<div class="col-span-4">
+					<p class="fancy3">
+						<br>
+						<br>
+						"Beyond his technical abilities, Harshit is characterized by his resilience, adaptability, and attention to detail. He approaches unfamiliar situations with calm confidence, asking thoughtful questions."
+						<br>
+						<br>
+						- Aditya Neel Tripuraneni (McMaster Venture Academy Mentor)
+					</p>
+				</div>	
+			</div>
+		</div>
+	</div>	
+	<br>
+	<br>
 	<br>
 
-		<div class="about">
-		<h2>About us</h2>
-		<p>DH was originally started up by two people, who began to innovate with new technology over the years. After trial and error, we are proud to announce our new products. We are to help you throughout your lives and are finding new ways to apply changes into everyday products. We are also striving to donate a portion of our money to great causes and help many around the world. Begin buying our products to help us expand our services and products.</p>
-		</div>
-
-		<div class="about">
-		<h2>New Product</h2>
-		<p>Have you ever run out of charge on a road-trip or while camping? Yes, you might have access to a portable charger, but what if that runs out of charge? You usually need an ingress to a plug or outlet although others might already be using it, or there is none in sight. Now there is a portable charger which utilizes thermoelectricity! Available for preorder at $64.99!
-		<br>
-		</br>
-		Check out the full description over here and consider buying.</p>
-		<form action="thermo-chrg.html" target="_blank">
-		<input type="submit" name="view" value="Learn More">
-		</form>
-		</div>
-
-
-		<div class="mail">
-		<form action="newsletter-submit.html" target="_blank">
-		<h3>Subscribe with your Email to Recieve Newsletter</h3> 
-		<input type="email" name="email" placeholder="Enter email" required="required">
-		<input type="submit" name="subscribe" value="Subscribe">
-		</form>
-		</div>
-	</main>
-
-	<!-- Footer element -->
+	<!-- footer -->
 	<footer>
-		<p>This site was created for Science Fair 2021. &copy; Harshit and Daschel</p>
-	</footer>
+        <p>This site was created as a personal portfolio. You can contact me at<a class="mail" href="mailto:1jainhar@hdsb.ca">1jainhar@hdsb.ca</a>or 905-802-2902.</p>
+		<p>&copy; 2025 Harshit Jain. All rights reserved.</p>
+    </footer>
 </body>
 </html>
