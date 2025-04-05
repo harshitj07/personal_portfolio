@@ -166,3 +166,20 @@ document.addEventListener("DOMContentLoaded", function () {
         applyTheme(newDarkMode);
     });
 });
+
+// Add touchstart event listeners for better mobile compatibility
+submenuToggles.forEach(toggle => {
+    toggle.addEventListener('touchstart', (e) => {
+        const submenu = toggle.nextElementSibling;
+        submenu.classList.toggle('active');
+        e.stopPropagation();
+    });
+});
+
+// Close menu when tapping outside
+document.addEventListener('touchstart', (event) => {
+    if (!event.target.closest('.fullscreen-menu') && !event.target.closest('.menu-toggle')) {
+        fullscreenMenu.classList.remove('active');
+        document.querySelectorAll('.submenu').forEach(submenu => submenu.classList.remove('active'));
+    }
+});
