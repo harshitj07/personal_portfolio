@@ -12,10 +12,9 @@ class NavBar extends HTMLElement {
 				
 				<!-- Mobile menu toggle button -->
 				<div class="menu-toggle">
-					<span></span>
-					<span></span>
-					<span></span>
-					<span></span>
+					<div class="bar"></div>
+					<div class="bar"></div>
+					<div class="bar"></div>
 				</div>
 				
 				<div class="links">
@@ -47,112 +46,68 @@ class NavBar extends HTMLElement {
 				</div>
 			</nav>
 		</div>
-		
-		<!-- Mobile Full Screen Menu -->
-		<div class="mobile-menu">
-			<div class="mobile-menu-links">
-				<a class="mobile-menu-link" href="resume.html">Resume</a>
-				<a class="mobile-menu-link" href="#" data-submenu="projects">Projects</a>
-				<a class="mobile-menu-link" href="#" data-submenu="i-stem">I-STEM</a>
-				<a class="mobile-menu-link" href="research.html">Research</a>
-				<a class="mobile-menu-link" href="contact.html">Contact</a>
-			</div>
-		</div>
-		
-		<!-- Mobile Submenus -->
-		<div class="mobile-submenu" id="projects-submenu">
-			<div class="mobile-submenu-header">
-				<button class="mobile-back-button">
-					<svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
-						<path d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
-					</svg>
-					Back
-				</button>
-				<div class="mobile-submenu-title">Projects</div>
-			</div>
-			<div class="mobile-submenu-links">
-				<a class="mobile-submenu-link" href="school.html">School</a>
-				<a class="mobile-submenu-link" href="personal.html">Personal</a>
-			</div>
-		</div>
-		
-		<div class="mobile-submenu" id="i-stem-submenu">
-			<div class="mobile-submenu-header">
-				<button class="mobile-back-button">
-					<svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
-						<path d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
-					</svg>
-					Back
-				</button>
-				<div class="mobile-submenu-title">I-STEM</div>
-			</div>
-			<div class="mobile-submenu-links">
-				<a class="mobile-submenu-link" href="grade9.html">Grade 9</a>
-				<a class="mobile-submenu-link" href="grade10.html">Grade 10</a>
-				<a class="mobile-submenu-link" href="grade11.html">Grade 11</a>
-			</div>
-		</div>
+		<div class="fullscreen-menu">
+            <div class="close-btn"><i class="fas fa-times"></i></div>
+            <a href="index.html">Home</a>
+            <a href="resume.html">Resume</a>
+            <a class="submenu-toggle">Projects</a>
+            <div class="submenu">
+                <a href="school.html">School</a>
+                <a href="personal.html">Personal</a>
+            </div>
+            <a class="submenu-toggle">I-STEM</a>
+            <div class="submenu">
+                <a href="grade9.html">Grade 9</a>
+                <a href="grade10.html">Grade 10</a>
+                <a href="grade11.html">Grade 11</a>
+            </div>
+            <a href="research.html">Research</a>
+            <a href="contact.html">Contact</a>
+        </div>
 		`;
 		
-		// Mobile menu functionality
 		const menuToggle = this.querySelector('.menu-toggle');
-		const mobileMenu = this.querySelector('.mobile-menu');
-		const mobileMenuLinks = this.querySelectorAll('.mobile-menu-link[data-submenu]');
-		const mobileBackButtons = this.querySelectorAll('.mobile-back-button');
-		
-		// Toggle mobile menu
+		const fullscreenMenu = this.querySelector('.fullscreen-menu');
+		const closeBtn = this.querySelector('.close-btn');
+		const submenuToggles = this.querySelectorAll('.submenu-toggle');
+
+		// Open full-screen menu with animation
 		menuToggle.addEventListener('click', () => {
-			menuToggle.classList.toggle('open');
-			mobileMenu.classList.toggle('open');
-			document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+			fullscreenMenu.classList.add('active');
 		});
-		
-		// Open submenu when clicking on menu item with dropdown
-		mobileMenuLinks.forEach(link => {
-			link.addEventListener('click', (e) => {
-				e.preventDefault();
-				const submenuId = link.getAttribute('data-submenu');
-				const submenu = this.querySelector(`#${submenuId}-submenu`);
-				submenu.classList.add('open');
+
+		// Close full-screen menu
+		closeBtn.addEventListener('click', () => {
+			fullscreenMenu.classList.remove('active');
+		});
+
+		// Toggle submenus
+		submenuToggles.forEach(toggle => {
+			toggle.addEventListener('click', (e) => {
+				const submenu = toggle.nextElementSibling;
+				submenu.classList.toggle('active');
+				e.stopPropagation();
 			});
 		});
-		
-		// Go back from submenu
-		mobileBackButtons.forEach(button => {
-			button.addEventListener('click', () => {
-				const submenu = button.closest('.mobile-submenu');
-				submenu.classList.remove('open');
-			});
-		});
-		
-		// Close mobile menu when clicking outside
+
+		// Close menu when clicking outside
 		document.addEventListener('click', (event) => {
-			const isInsideNav = event.target.closest('#navbar');
-			const isInsideMobileMenu = event.target.closest('.mobile-menu');
-			const isInsideSubmenu = event.target.closest('.mobile-submenu');
-			const isMenuOpen = mobileMenu.classList.contains('open');
-			
-			if (!isInsideNav && !isInsideMobileMenu && !isInsideSubmenu && isMenuOpen && !event.target.closest('.menu-toggle')) {
-				menuToggle.classList.remove('open');
-				mobileMenu.classList.remove('open');
-				document.body.style.overflow = '';
+			if (!event.target.closest('.fullscreen-menu') && !event.target.closest('.menu-toggle')) {
+				fullscreenMenu.classList.remove('active');
+				this.querySelectorAll('.submenu').forEach(submenu => submenu.classList.remove('active'));
 			}
 		});
-		
-		// Handle window resize
-		window.addEventListener('resize', () => {
+
+		// Ensure the 3-line menu toggle is only visible on smaller screens
+		const handleResize = () => {
 			if (window.innerWidth > 768) {
-				menuToggle.classList.remove('open');
-				mobileMenu.classList.remove('open');
-				document.body.style.overflow = '';
-				
-				// Close any open submenus
-				const openSubmenus = this.querySelectorAll('.mobile-submenu.open');
-				openSubmenus.forEach(submenu => {
-					submenu.classList.remove('open');
-				});
+				fullscreenMenu.classList.remove('active');
+				this.querySelectorAll('.submenu').forEach(submenu => submenu.classList.remove('active'));
 			}
-		});
+		};
+
+		window.addEventListener('resize', handleResize);
+		handleResize();
 	}
 }
 
