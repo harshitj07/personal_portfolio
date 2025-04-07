@@ -77,6 +77,46 @@ document.addEventListener("DOMContentLoaded", function() {
             box.style.width = '90%';
             box.style.margin = '10px auto';
         });
+
+        // Fix centering of specific elements on homepage
+        if (document.body.id === 'home-page') {
+            // Center skills section and its items
+            const skillsSection = document.querySelector('h2:nth-of-type(2) + .course');
+            if (skillsSection) {
+                skillsSection.style.width = '95%';
+                skillsSection.style.margin = '0 auto';
+                
+                // Center each skill box
+                skillsSection.querySelectorAll('.col-span-4 p.fancy3').forEach(box => {
+                    box.style.width = '100%';
+                    box.style.margin = '10px auto';
+                    box.style.boxSizing = 'border-box';
+                });
+            }
+            
+            // Center testimonials section
+            const testimonialsSection = document.querySelector('h2:nth-of-type(3) + .me');
+            if (testimonialsSection) {
+                testimonialsSection.style.width = '95%';
+                testimonialsSection.style.margin = '0 auto 20px auto';
+                
+                // Center each testimonial box
+                testimonialsSection.querySelectorAll('.col-span-4 p.fancy3').forEach(box => {
+                    box.style.width = '100%';
+                    box.style.margin = '0 auto 15px auto';
+                    box.style.boxSizing = 'border-box';
+                });
+            }
+            
+            // Fix gallery centering
+            document.querySelectorAll('div.gallery').forEach(gallery => {
+                gallery.style.width = '90%';
+                gallery.style.margin = '0 auto 15px auto';
+                gallery.style.display = 'flex';
+                gallery.style.justifyContent = 'center';
+                gallery.style.gap = '15px';
+            });
+        }
     } else {
         // Ensure menu toggle is hidden on larger screens
         const menuToggle = document.querySelector('.menu-toggle');
@@ -157,6 +197,32 @@ document.addEventListener("DOMContentLoaded", function() {
             if (themeToggle) {
                 themeToggle.style.bottom = '20px';
                 themeToggle.style.right = '20px';
+            }
+
+            if (document.body.id === 'home-page' && window.innerWidth <= 768) {
+                // Re-center skills section
+                const skillsSection = document.querySelector('h2:nth-of-type(2) + .course');
+                if (skillsSection) {
+                    skillsSection.style.width = '95%';
+                    skillsSection.style.margin = '0 auto';
+                    
+                    skillsSection.querySelectorAll('.col-span-4 p.fancy3').forEach(box => {
+                        box.style.width = '100%';
+                        box.style.margin = '10px auto';
+                    });
+                }
+                
+                // Re-center testimonials
+                const testimonialsSection = document.querySelector('h2:nth-of-type(3) + .me');
+                if (testimonialsSection) {
+                    testimonialsSection.style.width = '95%';
+                    testimonialsSection.style.margin = '0 auto 20px auto';
+                    
+                    testimonialsSection.querySelectorAll('.col-span-4 p.fancy3').forEach(box => {
+                        box.style.width = '100%';
+                        box.style.margin = '0 auto 15px auto';
+                    });
+                }
             }
         }, 300); // Short delay to allow the orientation to complete
     });

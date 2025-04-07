@@ -409,37 +409,54 @@ Hover animation on mail link
 Source: https://css-tricks.com/css-link-hover-effects/ -> The Right-to-Left Color Swap Link Hover Effect
 */
 
+/* Email link with right-to-left hover effect */
 a.mail {
-	background-image: linear-gradient(
-	to right,
-	var(--denim),
-	var(--denim) 50%,
-	#ffffff 50%
-	);
-	background-size: 200% 100%;
-	background-position: -100%;
-	-webkit-background-clip: text;
-	-webkit-text-fill-color: transparent;
-	transition: all 0.7s ease-in-out;
+  position: relative;
+  display: inline-block;
+  background-image: linear-gradient(
+      to left,
+      var(--snow),
+      var(--snow) 50%,
+      var(--hover-color, #ffffff) 50%
+  );
+  background-size: 200% 100%;
+  background-position: 100% 0;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: var(--snow); /* fallback for older browsers */
+  text-decoration: none;
+  font-weight: 600;
+  padding: 0 4px;
+  transition: background-position 0.6s ease-in-out, opacity 0.3s ease;
+  opacity: 1;
 }
 
-a.mail:before {
-  	content: '';
-  	background: var(--denim);
-  	display: block;
-  	position: absolute;
-  	bottom: -3px;
-  	left: 0;
-  	width: 0;
-  	height: 3px;
-}
-
+/* Hover: animate the gradient from right to left */
 a.mail:hover {
-	background-position: 0;
+  background-position: 0 0;
+  opacity: 0.85;
+  text-decoration: none;
 }
 
-a.mail:hover::before {
-	width: 100%;
+a.mail:before,
+a.mail:after {
+  display: none;
+}
+
+/* Footer-specific style */
+footer a.mail {
+  font-weight: bold;
+  padding: 0 4px;
+}
+
+/* Dark Mode */
+:root[style*="--navy: #141414"] a.mail {
+  --hover-color: #6c8aaf;
+}
+
+/* Light Mode */
+:root[style*="--navy: #f2ede4"] a.mail {
+  --hover-color: #ffffff;
 }
 
 /*
@@ -1639,127 +1656,61 @@ z-index: 999;
   }
 }
 
-/* Additional mobile-specific styles for all pages */
+/* Mobile fixes for resume page */
 @media screen and (max-width: 768px) {
-  /* Ensure consistent margins and spacing */
-  body {
-    padding: 0;
-    overflow-x: hidden;
-  }
   
-  /* Fix container widths */
-  .container, 
-  .content-container,
-  div.course, 
-  div.me, 
-  div.container,
-  div[class*="container"] {
-    width: 95% !important;
-    padding: 10px !important;
-    margin: 0 auto !important;
+  /* Center the grid container */
+  div.course > div#container {
+    width: 100%;
+    margin: 0 auto;
   }
-  
-  /* Responsive table adjustments */
-  table {
-    display: block;
-    width: 100% !important;
-    overflow-x: auto;
+
+  /* Center the grid itself */
+  div.course > div#container > .grid {
+    display: block; /* Stack columns */
+    width: 95%; /* Take up most of the width */
+    margin: 0 auto; /* Center the grid */
   }
-  
-  /* Fix form elements */
-  input, select, textarea {
-    width: 100% !important;
-    box-sizing: border-box;
+
+  /* Center each column */
+  .col-span-4 {
+    width: 100% !important; /* Each column takes full width */
+    max-width: 95%; /* But doesn't exceed 95% of the container */
+    margin: 0 auto 15px auto; /* Center each column and add spacing */
+    float: none; /* Prevent floating */
+    display: block; /* Ensure block display */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
   }
-  
-  /* Adjust heading sizes */
-  h1 {
-    font-size: 2.2rem !important;
-  }
-  
-  h2 {
-    font-size: 1.8rem !important;
-  }
-  
-  h3 {
-    font-size: 1.5rem !important;
-  }
-  
-  /* Force single column layout for flexbox containers */
-  [style*="display: flex"], 
-  [style*="display:flex"],
-  .flex-container {
-    flex-direction: column !important;
-    align-items: center !important;
-  }
-  
-  /* Make all images responsive */
-  img:not(.hero-img) {
-    max-width: 90% !important;
-    height: auto !important;
-    margin: 10px auto !important;
-  }
-  
-  /* Project cards and other card-like elements */
-  .card, .project-card, [class*="card"] {
-    width: 100% !important;
-    margin: 10px 0 !important;
-  }
-  
-  /* Better spacing between sections */
-  section, article, [class*="section"] {
-    margin-bottom: 2rem !important;
-    padding: 1rem !important;
-  }
-  
-  /* Ensure theme toggle button is properly positioned on all mobile devices */
-  button[style*="position: fixed"][style*="bottom:"][style*="right:"] {
-    bottom: 20px !important;
-    right: 20px !important;
-    width: 40px !important;
-    height: 40px !important;
+
+  /* Style the text within the columns */
+  .col-span-4 > p.text {
+    text-align: center; /* Center the text */
+    width: 100%; /* Make the paragraph take the full width of the column */
+    box-sizing: border-box; /* Ensure padding is included in width */
+    padding: 15px; /* Add some padding */
+    margin: 0; /* Reset default margins */
   }
 }
 
-/* Specific fixes for research and project pages */
+/* Ensure consistent width for boxes after About Me on mobile */
 @media screen and (max-width: 768px) {
-  /* Research page specific */
-  .research-item,
-  .publication,
-  .paper,
-  .project {
-    width: 100% !important;
-    flex-direction: column !important;
-    margin: 1rem 0 !important;
+  /* Target the Skills, Hobbies, and Testimonials sections */
+  h2 + .course, /* Skills section */
+  h2 + div.gallery, /* Hobbies section */
+  h2 + .me { /* Testimonials section */
+    width: 95% !important; /* Set width to 95% */
+    margin: 0 auto 20px !important; /* Center and add bottom margin */
+    box-sizing: border-box; /* Include padding and border in width */
+    padding: 10px; /* Add some padding */
   }
-  
-  /* Fix for timelines often used on project pages */
-  .timeline, 
-  .timeline-item,
-  [class*="timeline"] {
-    width: 100% !important;
-    margin-left: 0 !important;
-    padding-left: 1rem !important;
-  }
-  
-  /* Table improvements for mobile */
-  td, th {
-    padding: 8px 5px !important;
-    font-size: 0.9rem !important;
-  }
-  
-  /* Contact form improvements */
-  form {
-    width: 90% !important;
-    margin: 0 auto !important;
-    padding: 15px !important;
-  }
-  
-  /* Resume specific fixes */
-  .resume-section,
-  .experience,
-  .education,
-  [class*="resume"] {
-    padding: 0.8rem !important;
+
+  /* Ensure consistent width for boxes within these sections */
+  .col-span-4 > p.text,
+  .col-span-4 > p.fancy3 {
+    width: 100% !important; /* Make the paragraph take the full width of the column */
+    max-width: 100% !important; /* Ensure it doesn't exceed the column width */
+    box-sizing: border-box; /* Include padding and border in width */
+    padding: 15px; /* Add some padding */
+    margin: 0 auto; /* Center horizontally */
   }
 }
