@@ -1714,3 +1714,56 @@ z-index: 999;
     margin: 0 auto; /* Center horizontally */
   }
 }
+
+/* Fix for Grade 9, 10, 11, School, and Personal pages first paragraph alignment */
+body > div.me:first-of-type {
+    width: 70%; /* Match the width of other content containers */
+    margin: 0 auto 20px auto; /* Center it with proper spacing */
+    box-sizing: border-box;
+}
+
+body > div.me:first-of-type p.fancy3 {
+    width: 100%; /* Make paragraph take full width of its container */
+    margin: 0; /* Remove extra margins that might affect alignment */
+    box-sizing: border-box;
+}
+
+/* Fix for project sections under headings */
+h2 + div.me {
+    width: 70%; /* Match the width of other content containers */
+    margin: 0 auto 20px auto; /* Center with proper spacing */
+    box-sizing: border-box;
+}
+
+h2 + div.me > div {
+    width: 100%; /* Ensure inner div takes full width */
+}
+
+h2 + div.me p.fancy3 {
+    width: 100%; /* Make paragraph take full width of its container */
+    margin: 10px 0; /* Keep consistent vertical spacing */
+    box-sizing: border-box;
+}
+
+/* Force the consistent width even on specific display:flex sections */
+div.me[style*="display: flex"] {
+    width: 70% !important; /* Force width to be 70% */
+    margin: 0 auto 20px auto !important; /* Force proper margins */
+}
+
+/* Mobile adjustments */
+@media screen and (max-width: 768px) {
+    body > div.me:first-of-type,
+    h2 + div.me,
+    div.me[style*="display: flex"] {
+        width: 90% !important; /* Wider on mobile */
+        margin: 0 auto 15px auto !important;
+    }
+}
+
+/* Fix for any nested items within these containers */
+div.me > div > p.fancy3,
+div.me > div > div > p.fancy3 {
+    width: 100% !important;
+    box-sizing: border-box;
+}
