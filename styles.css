@@ -61,6 +61,48 @@ TABLE OF CONTENTS
     color: var(--snow) !important;
 }
 
+/* Add smooth transition to root for theme switching */
+:root {
+  /* Default color variables will go here */
+  --navy: #141414;
+  --midnight: #222126;
+  --snow: #edeef0;
+  --denim: #373740;
+  
+  /* Add transition for all color properties */
+  transition: background-color 0.5s ease, 
+              color 0.5s ease,
+              border-color 0.5s ease,
+              box-shadow 0.5s ease;
+}
+
+/* Add transitions to all elements that use theme colors */
+body, 
+header, 
+footer, 
+.navbar, 
+.dropdown-content, 
+button, 
+a, 
+p, 
+h1, h2, h3, h4, h5, h6,
+.hero-banner::before,
+.fullscreen-menu,
+.mobile-menu,
+.fancy1, .fancy2, .fancy3, .text,
+img, video {
+  transition: background-color 0.5s ease, 
+              color 0.5s ease,
+              border-color 0.5s ease,
+              box-shadow 0.5s ease;
+}
+
+/* Prevent transition on initial page load */
+.no-transition,
+.no-transition * {
+  transition: none !important;
+}
+
 /*
 ---------------
 2. Grid Styles
