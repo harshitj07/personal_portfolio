@@ -205,8 +205,11 @@ document.addEventListener("DOMContentLoaded", function () {
     setTimeout(updateUIForDevice, 500);
 });
 
-/* 3-Line Toggle Positioning */
+/**
+ * This script specifically ensures the 3-line toggle stays positioned correctly
+ */
 (function() {
+    // Function to adjust the toggle position
     function fixTogglePosition() {
         const isMobile = window.innerWidth <= 768;
         const menuToggle = document.querySelector('.menu-toggle');
@@ -214,6 +217,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (!menuToggle) return;
         
         if (isMobile) {
+            // Force the position to be absolute with !important-like specificity
             menuToggle.setAttribute('style', 
                 'position: absolute !important; ' +
                 'top: 50% !important; ' +

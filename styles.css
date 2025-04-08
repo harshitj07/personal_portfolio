@@ -1481,47 +1481,6 @@ Source: https://www.sliderrevolution.com/resources/css-button-hover-effects/ -> 
   }
 }
 
-/* Projects and I-STEM Pages Fix */
-body>div.me:first-of-type {
-  width: 70%;
-  margin: 0 auto 20px auto;
-  box-sizing: border-box;
-}
-
-body>div.me:first-of-type p.fancy3 {
-  width: 100%;
-  margin: 0;
-  box-sizing: border-box;
-}
-
-h2+div.me {
-  width: 70%;
-  margin: 0 auto 20px auto;
-  box-sizing: border-box;
-}
-
-h2+div.me>div {
-  width: 100%;
-}
-
-h2+div.me p.fancy3 {
-  width: 100%;
-  margin: 10px 0;
-  box-sizing: border-box;
-}
-
-div.me[style*="display: flex"] {
-  width: 70% !important;
-  margin: 0 auto 20px auto !important;
-}
-
-/* Fixed Any Issues */
-div.me>div>p.fancy3,
-div.me>div>div>p.fancy3 {
-  width: 100% !important;
-  box-sizing: border-box;
-}
-
 .dropdown-content.show {
   display: block;
 }
@@ -1627,4 +1586,59 @@ div.me>div>div>p.fancy3 {
 
 .fullscreen-menu .close-btn i {
   font-size: 1.2rem;
+}
+
+/* Fix  width on all content pages for fancy3 paragraphs */
+body > div.me:first-of-type,
+.section-container > div.me:first-of-type {
+    width: 70%;
+    margin: 0 auto 20px auto;
+    box-sizing: border-box;
+}
+
+h2 + div.me,
+div.me.project-container {
+    width: 70%;
+    margin: 0 auto 20px auto;
+    box-sizing: border-box;
+}
+
+div.me > div {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+div.me p.fancy3,
+div.me > div > p.fancy3,
+div.me > div > div > p.fancy3 {
+    width: 100% !important;
+    margin: 10px 0;
+    box-sizing: border-box;
+}
+
+div.me[style*="display: flex"] {
+    width: 70% !important;
+    margin: 0 auto 20px auto !important;
+}
+
+/* Mobile adjustments for all .me containers */
+@media screen and (max-width: 768px) {
+    body > div.me:first-of-type,
+    .section-container > div.me:first-of-type,
+    h2 + div.me,
+    div.me.project-container,
+    div.me[id="second-research"],
+    body.research div.me:nth-of-type(3),
+    div.me[style*="display: flex"] {
+        width: 90% !important;
+        margin: 0 auto 15px auto !important;
+    }
+    
+    /* Ensure mobile fancy3 paragraphs have correct padding/margin */
+    div.me p.fancy3,
+    div.me > div > p.fancy3,
+    div.me > div > div > p.fancy3 {
+        padding: 15px;
+        margin: 10px auto;
+    }
 }
