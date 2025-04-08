@@ -1,10 +1,6 @@
-/**
- * Mobile Compatibility Enhancement Script
- * This script ensures all pages have consistent mobile functionality
- */
+/* Mobile Compatibility Enhancement Script */
 
 document.addEventListener("DOMContentLoaded", function() {
-    // Check if viewport meta tag exists, add it if not
     if (!document.querySelector('meta[name="viewport"]')) {
         const viewportMeta = document.createElement('meta');
         viewportMeta.name = 'viewport';
@@ -50,12 +46,9 @@ document.addEventListener("DOMContentLoaded", function() {
         
         // Fix elements that might overflow on mobile
         document.querySelectorAll('img').forEach(img => {
-            // Keep original classes
             const originalClass = img.className;
-            // Apply max-width to ensure it doesn't overflow on mobile
             img.style.maxWidth = '100%';
             img.style.height = 'auto';
-            // Add original class back to maintain other styles
             if (originalClass) img.className = originalClass;
         });
         
@@ -80,13 +73,11 @@ document.addEventListener("DOMContentLoaded", function() {
 
         // Fix centering of specific elements on homepage
         if (document.body.id === 'home-page') {
-            // Center skills section and its items
             const skillsSection = document.querySelector('h2:nth-of-type(2) + .course');
             if (skillsSection) {
                 skillsSection.style.width = '95%';
                 skillsSection.style.margin = '0 auto';
                 
-                // Center each skill box
                 skillsSection.querySelectorAll('.col-span-4 p.fancy3').forEach(box => {
                     box.style.width = '100%';
                     box.style.margin = '10px auto';
@@ -135,7 +126,6 @@ document.addEventListener("DOMContentLoaded", function() {
             menuToggle.style.display = isCurrentlyMobile ? 'flex' : 'none';
             
             if (isCurrentlyMobile) {
-                // Ensure proper positioning in mobile mode
                 menuToggle.style.position = 'absolute';
                 menuToggle.style.top = '50%';
                 menuToggle.style.right = '30px';
@@ -165,7 +155,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 menuToggle.style.position = 'absolute';
                 menuToggle.style.top = '50%';
                 menuToggle.style.transform = 'translateY(-50%)';
-                menuToggle.style.right = '10px'; // Move very right
+                menuToggle.style.right = '10px';
             }
         } else {
             // Revert to desktop styles when screen is larger
@@ -200,7 +190,6 @@ document.addEventListener("DOMContentLoaded", function() {
             }
 
             if (document.body.id === 'home-page' && window.innerWidth <= 768) {
-                // Re-center skills section
                 const skillsSection = document.querySelector('h2:nth-of-type(2) + .course');
                 if (skillsSection) {
                     skillsSection.style.width = '95%';
@@ -209,18 +198,6 @@ document.addEventListener("DOMContentLoaded", function() {
                     skillsSection.querySelectorAll('.col-span-4 p.fancy3').forEach(box => {
                         box.style.width = '100%';
                         box.style.margin = '10px auto';
-                    });
-                }
-                
-                // Re-center testimonials
-                const testimonialsSection = document.querySelector('h2:nth-of-type(3) + .me');
-                if (testimonialsSection) {
-                    testimonialsSection.style.width = '95%';
-                    testimonialsSection.style.margin = '0 auto 20px auto';
-                    
-                    testimonialsSection.querySelectorAll('.col-span-4 p.fancy3').forEach(box => {
-                        box.style.width = '100%';
-                        box.style.margin = '0 auto 15px auto';
                     });
                 }
             }

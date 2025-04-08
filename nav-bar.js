@@ -117,8 +117,8 @@ customElements.define('nav-bar', NavBar);
 document.addEventListener("DOMContentLoaded", function () {
     const toggleButton = document.createElement("button");
     toggleButton.style.position = "fixed";
-    toggleButton.style.bottom = "20px"; // Moved closer to bottom edge
-    toggleButton.style.right = "20px"; // Moved closer to right edge
+    toggleButton.style.bottom = "20px";
+    toggleButton.style.right = "20px";
     toggleButton.style.padding = "12px";
     toggleButton.style.cursor = "pointer";
     toggleButton.style.fontSize = "20px";
@@ -205,11 +205,8 @@ document.addEventListener("DOMContentLoaded", function () {
     setTimeout(updateUIForDevice, 500);
 });
 
-/**
- * This script specifically ensures the 3-line toggle stays positioned correctly
- */
+/* 3-Line Toggle Positioning */
 (function() {
-    // Function to adjust the toggle position
     function fixTogglePosition() {
         const isMobile = window.innerWidth <= 768;
         const menuToggle = document.querySelector('.menu-toggle');
@@ -217,7 +214,6 @@ document.addEventListener("DOMContentLoaded", function () {
         if (!menuToggle) return;
         
         if (isMobile) {
-            // Force the position to be absolute with !important-like specificity
             menuToggle.setAttribute('style', 
                 'position: absolute !important; ' +
                 'top: 50% !important; ' +
