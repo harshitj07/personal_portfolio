@@ -120,6 +120,7 @@ video {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   grid-gap: 0px;
+  width: 100%;
 }
 
 .col-span-12,
@@ -243,7 +244,7 @@ p.fancy1 {
   box-sizing: border-box;
   background: var(--midnight);
   padding: 20px;
-  font-size: 1.05em;
+  font-size: 1em;
   font-family: 'Nunito', sans-serif;
   border-radius: 10px 10px 10px 10px;
 }
@@ -317,7 +318,7 @@ img.me {
 }
 
 img:hover {
-  transform: scale(1.08);
+  transform: scale(1.03);
   /* Scales up by 3% */
   filter: brightness(1) contrast(1.1);
   /* Return to normal brightness on hover */
@@ -537,6 +538,7 @@ footer a.mail {
 div.course,
 div.me {
   display: flex;
+  align-items: flex-start;
   width: 70%;
   margin: auto;
 }
@@ -1351,13 +1353,13 @@ Source: https://www.sliderrevolution.com/resources/css-button-hover-effects/ -> 
 
   div.course>div#container>.grid {
     display: block;
-    width: 95%;
+    width: 100%;
     margin: 0 auto;
   }
 
   .col-span-4 {
     width: 100% !important;
-    max-width: 95%;
+    max-width: 100%;
     margin: 0 auto 15px auto;
     float: none;
     display: block;

@@ -25,8 +25,8 @@ class NavBar extends HTMLElement {
 					<div class="dropdown navlink">
 						<button class="dropbtn">Projects</button>
 						<div class="dropdown-content">
-							<a class="resource" href="school.html">School</a>
 							<a class="resource" href="personal.html">Personal</a>
+							<a class="resource" href="school.html">School</a>
 						</div>
 					</div>
 
@@ -37,6 +37,7 @@ class NavBar extends HTMLElement {
 							<a class="resource" href="grade9.html">Grade 9</a>
 							<a class="resource" href="grade10.html">Grade 10</a>
 							<a class="resource" href="grade11.html">Grade 11</a>
+                            <a class="resource" href="grade12.html">Grade 12</a>
 						</div>
 					</div>
 
@@ -52,8 +53,8 @@ class NavBar extends HTMLElement {
             <a href="resume.html">Resume</a>
             <a class="submenu-toggle">Projects</a>
             <div class="submenu">
-                <a href="school.html">School</a>
                 <a href="personal.html">Personal</a>
+                <a href="school.html">School</a>
             </div>
             <a class="submenu-toggle">I-STEM</a>
             <div class="submenu">
